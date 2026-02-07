@@ -287,6 +287,26 @@ async function updateProfile(userId: string, updates: Record<string, string>) {
   return { message: "Profile updated successfully" };
 }
 
+async function updateTeacherEmail(username: string, email: string) {
+  const { data: profile, error: fetchError } = await supabaseAdmin
+    .from("profiles")
+    .select("id")
+    .eq("username", username)
+    .maybeSingle();
+
+  if (fetchError || !profile) {
+    throw new Error(`Teacher with username '${username}' not found`);
+  }
+
+  const { error } = await supabaseAdmin
+    .from("profiles")
+    .update({ email, updated_at: new Date().toISOString() })
+    .eq("id", profile.id);
+
+  if (error) throw error;
+  return { message: "Teacher email updated successfully" };
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
@@ -328,6 +348,9 @@ Deno.serve(async (req: Request) => {
         break;
       case "update-profile":
         result = await updateProfile(body.userId, body.updates);
+        break;
+      case "update-teacher-email":
+        result = await updateTeacherEmail(body.username, body.email);
         break;
       default:
         return respond({ error: "Invalid action" }, 400);

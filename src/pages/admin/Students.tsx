@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, UserPlus, Upload, Trash2, KeyRound, Edit3, X, Loader2, FileSpreadsheet, CheckCircle2, AlertCircle, Users } from 'lucide-react';
+import { Search, UserPlus, Upload, Trash2, KeyRound, Edit3, X, Loader2, FileSpreadsheet, CheckCircle2, AlertCircle, Users, Download } from 'lucide-react';
 import { AdminLayout } from '../../components/AdminLayout';
 import { useAuth } from '../../contexts/AuthContext';
-import { parseCSV, ParsedStudent } from '../../utils/csvParser';
+import { parseExcelFile, ParsedStudent, exportCredentialsToExcel } from '../../utils/excelParser';
 
 interface Profile {
   id: string; full_name: string; role: string; username: string; email: string;
@@ -81,16 +81,18 @@ export const AdminStudents = () => {
     setActionLoading(null);
   };
 
-  const handleCSVUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleExcelUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      const { students: parsed, errors } = parseCSV(ev.target?.result as string);
+
+    try {
+      const { students: parsed, errors } = await parseExcelFile(file);
       setCsvPreview(parsed);
       setCsvErrors(errors);
-    };
-    reader.readAsText(file);
+    } catch (err: any) {
+      notify(err.message, 'error');
+      setCsvErrors([err.message]);
+    }
   };
 
   const submitCSV = async () => {
@@ -132,6 +134,26 @@ export const AdminStudents = () => {
 
   const startEdit = (s: Profile) => { setEditId(s.id); setEditData({ full_name: s.full_name, class: s.class, email: s.email, father_mobile: s.father_mobile, mother_mobile: s.mother_mobile, student_mobile: s.student_mobile }); };
 
+  const handleExportCredentials = async () => {
+    setActionLoading('export');
+    try {
+      const allUsers = await apiFetch('list-users', {});
+      const credentialsData = allUsers.users.map((user: Profile) => ({
+        name: user.full_name,
+        role: user.role.charAt(0).toUpperCase() + user.role.slice(1),
+        username: user.username,
+        password: '(Contact Admin)',
+        class: user.class || '',
+        contact: user.phone || user.student_mobile || '',
+      }));
+      exportCredentialsToExcel(credentialsData);
+      notify('Credentials exported successfully');
+    } catch (err: any) {
+      notify(err.message, 'error');
+    }
+    setActionLoading(null);
+  };
+
   const saveEdit = async () => {
     if (!editId) return;
     setActionLoading(editId);
@@ -167,8 +189,12 @@ export const AdminStudents = () => {
             </div>
           </div>
           <div className="flex gap-2">
+            <button onClick={handleExportCredentials} disabled={actionLoading === 'export'} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all shadow-sm disabled:opacity-50">
+              {actionLoading === 'export' ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+              Export Credentials
+            </button>
             <button onClick={() => { setView('csv'); setCsvPreview([]); setCsvErrors([]); }} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all shadow-sm">
-              <Upload className="h-4 w-4" />CSV Upload
+              <Upload className="h-4 w-4" />Excel Upload
             </button>
             <button onClick={() => setView('add')} className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 text-sm font-medium text-white hover:bg-blue-700 transition-all shadow-sm">
               <UserPlus className="h-4 w-4" />Add Student
@@ -180,19 +206,20 @@ export const AdminStudents = () => {
           {view === 'csv' && (
             <motion.div key="csv" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mb-6 bg-white rounded-2xl shadow-soft border border-slate-100 p-6">
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2"><FileSpreadsheet className="h-5 w-5 text-blue-600" /><h2 className="font-semibold text-slate-900">Bulk Upload via CSV</h2></div>
+                <div className="flex items-center gap-2"><FileSpreadsheet className="h-5 w-5 text-blue-600" /><h2 className="font-semibold text-slate-900">Bulk Upload via Excel</h2></div>
                 <button onClick={() => setView('list')}><X className="h-5 w-5 text-slate-400 hover:text-slate-600" /></button>
               </div>
-              <p className="text-xs text-slate-500 mb-3">Format: Student Name, Class, Father Mobile, Mother Mobile, Student Mobile, Email ID, Username, Password</p>
-              <input ref={fileRef} type="file" accept=".csv" onChange={handleCSVUpload} className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+              <p className="text-xs text-slate-500 mb-3">Excel columns: Student Name, Class, Father Mobile, Mother Mobile, Student Mobile</p>
+              <p className="text-xs text-slate-400 mb-3">Username format: firstname + class number (e.g., aditya6). Password format: AA@ + last 4 digits of student mobile</p>
+              <input ref={fileRef} type="file" accept=".xlsx,.xls" onChange={handleExcelUpload} className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
               {csvErrors.length > 0 && <div className="mt-3 p-3 bg-red-50 rounded-xl text-xs text-red-600">{csvErrors.map((e, i) => <p key={i}>{e}</p>)}</div>}
               {csvPreview.length > 0 && (
                 <div className="mt-4">
                   <p className="text-sm font-medium text-slate-700 mb-2">{csvPreview.length} students ready</p>
                   <div className="max-h-40 overflow-auto rounded-xl border border-slate-200">
                     <table className="w-full text-xs">
-                      <thead className="bg-slate-50 sticky top-0"><tr>{['Name','Class','Username'].map(h => <th key={h} className="px-3 py-2 text-left text-slate-600 font-medium">{h}</th>)}</tr></thead>
-                      <tbody className="divide-y divide-slate-100">{csvPreview.slice(0, 10).map((s, i) => <tr key={i}><td className="px-3 py-2 text-slate-800">{s.name}</td><td className="px-3 py-2 text-slate-600">{s.class}</td><td className="px-3 py-2 text-slate-600">{s.username}</td></tr>)}</tbody>
+                      <thead className="bg-slate-50 sticky top-0"><tr>{['Name','Class','Username','Password'].map(h => <th key={h} className="px-3 py-2 text-left text-slate-600 font-medium">{h}</th>)}</tr></thead>
+                      <tbody className="divide-y divide-slate-100">{csvPreview.slice(0, 10).map((s, i) => <tr key={i}><td className="px-3 py-2 text-slate-800">{s.name}</td><td className="px-3 py-2 text-slate-600">{s.class}</td><td className="px-3 py-2 text-slate-600 font-mono">{s.username}</td><td className="px-3 py-2 text-slate-600 font-mono">{s.password}</td></tr>)}</tbody>
                     </table>
                   </div>
                   {csvPreview.length > 10 && <p className="text-xs text-slate-400 mt-1">...and {csvPreview.length - 10} more</p>}
