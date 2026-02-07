@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Mail, Phone, MapPin, Twitter, Heart } from 'lucide-react';
+import { Mail, Phone, MapPin, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Footer = () => {
@@ -10,29 +10,9 @@ export const Footer = () => {
             <h3 className="text-2xl font-bold font-montserrat mb-4 flex items-center space-x-2">
               <span>Arambhik Academy</span>
             </h3>
-            <p className="text-slate-300 leading-relaxed mb-6">
+            <p className="text-slate-300 leading-relaxed">
               Building strong foundations for academic excellence. Specializing in CBSE and ICSE board exam preparation for Classes 6-12 in Dehradun.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-white/20 hover:-translate-y-1 transition-all"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-white/20 hover:-translate-y-1 transition-all"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-white/20 hover:-translate-y-1 transition-all"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-            </div>
           </div>
 
           <div>
