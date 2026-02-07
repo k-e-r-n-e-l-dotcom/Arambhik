@@ -255,7 +255,7 @@ async function listUsers(role?: string) {
   if (role) query = query.eq("role", role);
   const { data, error } = await query;
   if (error) throw error;
-  return data;
+  return { users: data || [] };
 }
 
 async function deleteUser(userId: string) {
