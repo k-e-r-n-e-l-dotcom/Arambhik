@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Star } from 'lucide-react';
+import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Star, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
