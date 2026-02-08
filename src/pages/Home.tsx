@@ -91,10 +91,10 @@ export const Home = () => {
               </motion.div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white text-balance">
-                Best Tuition for{' '}
+                From Basics to{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-200 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(251,191,36,0.5)]" style={{ WebkitTextStroke: '0.5px rgba(251,191,36,0.3)' }}>
-                    School Toppers
+                    Brilliance
                   </span>
                   <motion.div
                     initial={{ width: 0 }}
@@ -102,12 +102,11 @@ export const Home = () => {
                     transition={{ delay: 0.8, duration: 0.8 }}
                     className="absolute bottom-2 left-0 h-3 bg-gradient-to-r from-amber-500/40 to-yellow-500/40 blur-sm -z-10"
                   ></motion.div>
-                </span>{' '}
-                in Dehradun
+                </span>
               </h1>
 
               <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
-                Focusing on Concepts, School Homework, and Board Results. Build a strong foundation with expert guidance.
+                Dedicated Science & Computer Labs where students learn by doing — building real understanding, confidence, and step-by-step academic growth.
               </p>
 
               <div className="pt-4 space-y-6">
