@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Users, Award, TrendingUp, ChevronDown, Star, Trophy, Calendar, TrendingUp as Growth, Quote, ArrowRight } from 'lucide-react';
+import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -42,12 +42,6 @@ export const Home = () => {
     { name: "Kavya Reddy", class: "10th CBSE", score: "94.6%", subject: "All Subjects", year: "2024" }
   ];
 
-  const achievements = [
-    { icon: Trophy, title: "School Toppers", count: "23", description: "Students ranked in top 3" },
-    { icon: Award, title: "90+ Scorers", count: "156", description: "In 2024 boards" },
-    { icon: Growth, title: "Average Improvement", count: "18%", description: "Within first year" },
-    { icon: Star, title: "Perfect Scores", count: "8", description: "100/100 in subjects" }
-  ];
 
   useEffect(() => {
     const testimonialInterval = setInterval(() => {
@@ -330,29 +324,6 @@ export const Home = () => {
                 </div>
               </div>
             </motion.div>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {achievements.map((achievement, index) => {
-              const Icon = achievement.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="bg-white border-2 border-slate-200 rounded-2xl p-6 text-center hover:border-accent-500 hover:shadow-soft-lg hover:-translate-y-1 transition-all group"
-                >
-                  <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-accent-500 to-amber-600 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="text-4xl font-bold text-primary-900 mb-1">{achievement.count}</div>
-                  <div className="font-semibold text-slate-900 mb-1">{achievement.title}</div>
-                  <div className="text-sm text-slate-600">{achievement.description}</div>
-                </motion.div>
-              );
-            })}
           </div>
 
         </div>
