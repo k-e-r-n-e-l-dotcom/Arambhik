@@ -107,7 +107,7 @@ export const Home = () => {
                 <div className="space-y-4 text-slate-300 leading-relaxed">
                   <h2 className="text-2xl text-white font-bold">Who We Are</h2>
                   <p>
-                    Two young founders from Dehradun began their journey while preparing for civil services. To support their studies, they started home tuition for neighborhood students in Sainik Colony. Teaching soon became more than income — it became a purpose.
+                   Arambhik Academy is a concept-driven learning institute designed for CBSE students from Class 6 to 10, where understanding comes before memorisation. We believe education should build clarity, confidence, and curiosity—not pressure.
                   </p>
 
                   <motion.div
@@ -117,10 +117,10 @@ export const Home = () => {
                     className="overflow-hidden space-y-4"
                   >
                     <p>
-                      With minimal resources, they taught from a small rented room, reinvesting everything into books, learning material, and better teaching methods. As their students began achieving outstanding results, parents across Dehradun started trusting them. What began as a humble home tuition setup evolved into a growing coaching institute built on honesty, personal attention, and deep commitment to each child's future.
+                     Our academy is equipped with a dedicated science and computer lab where students learn through experiments, demonstrations, and hands-on activities. The lab environment encourages curiosity, practical understanding, and application-based learning aligned with the CBSE curriculum.
                     </p>
                     <p>
-                      Today, the institute continues to expand with the same civil services discipline that shaped its foundation. The founders still teach personally, treating students like family and guiding them beyond textbooks. Their dream is to build confident learners who carry strong values, ambition, and academic excellence into the future.
+                      At Arambhik Academy, we don’t just prepare students for exams—we help them think scientifically, learn independently, and grow confidently. Every concept is taught with purpose, every student is guided with care, and every step of learning begins with a strong foundation.
                     </p>
                   </motion.div>
 
