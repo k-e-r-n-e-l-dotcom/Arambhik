@@ -26,13 +26,17 @@ export const About = () => {
           >
             <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Story</h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Two young founders from Dehradun began their journey while preparing for civil services. To support their studies, they started home tuition for neighborhood students in Sainik Colony. Teaching soon became more than income — it became a purpose. They believed students deserve mentorship, discipline, and clarity of thinking, not just exam marks.
+             Arambhik Academy is a concept-driven learning institute designed for CBSE students from Class 6 to 10, where understanding comes before memorisation. We believe education should build clarity, confidence, and curiosity—not pressure.
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed">
               With minimal resources, they taught from a small rented room, reinvesting everything into books, learning material, and better teaching methods. As their students began achieving outstanding results, parents across Dehradun started trusting them. What began as a humble home tuition setup evolved into a growing coaching institute built on honesty, personal attention, and deep commitment to each child's future.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Today, the institute continues to expand with the same civil services discipline that shaped its foundation. The founders still teach personally, treating students like family and guiding them beyond textbooks. Their dream is to build confident learners in Dehradun who carry strong values, ambition, and academic excellence into the future.
+             Our teaching follows a unique learning model that blends structured pre-class preparation, engaging offline classroom sessions, and meaningful post-class practice. With small batch sizes (maximum 10 students per class), we ensure personal attention, regular feedback, and strong teacher-student interaction. Our team includes experienced offline subject teachers, an online educator, and dedicated mentors, working together to support both academic growth and disciplined study habits.
+
+Technology supports our learning ecosystem through Google Classroom, Meet, Sheets, presentations, and WhatsApp, making communication, tracking, and revision seamless for students and parents.
+
+Our academy is equipped with a dedicated science and computer lab where students learn through experiments, demonstrations, and hands-on activities. The lab environment encourages curiosity, practical understanding, and application-based learning aligned with the CBSE curriculum.
             </p>
           </motion.div>
 
@@ -46,7 +50,7 @@ export const About = () => {
               <Target className="h-12 w-12 text-blue-800 mb-4" />
               <h3 className="text-xl font-bold text-blue-900 mb-3">Our Mission</h3>
               <p className="text-gray-700">
-                To provide quality tuition that helps students excel in their school studies and achieve top marks in board examinations.
+                At Arambhik Academy, we don’t just prepare students for exams—we help them think scientifically, learn independently, and grow confidently. Every concept is taught with purpose, every student is guided with care, and every step of learning begins with a strong foundation.
               </p>
             </motion.div>
 
