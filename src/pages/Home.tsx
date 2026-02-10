@@ -60,10 +60,10 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-screen flex items-center px-4 pt-32 pb-20 bg-gradient-to-br from-slate-900 via-primary-950 to-slate-900">
+      <section className="relative min-h-screen flex items-center px-4 pt-32 pb-20 bg-gradient-to-br from-primary-900 via-primary-800 to-slate-900">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/30 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -87,14 +87,14 @@ export const Home = () => {
               <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white text-balance">
                 From Basics to{' '}
                 <span className="relative inline-block">
-                  <span className="relative z-10 bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-200 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(251,191,36,0.5)]" style={{ WebkitTextStroke: '0.5px rgba(251,191,36,0.3)' }}>
+                  <span className="relative z-10 bg-gradient-to-r from-accent-200 via-accent-300 to-accent-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(0,163,204,0.5)]" style={{ WebkitTextStroke: '0.5px rgba(0,163,204,0.3)' }}>
                     Brilliance
                   </span>
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
                     transition={{ delay: 0.8, duration: 0.8 }}
-                    className="absolute bottom-2 left-0 h-3 bg-gradient-to-r from-amber-500/40 to-yellow-500/40 blur-sm -z-10"
+                    className="absolute bottom-2 left-0 h-3 bg-gradient-to-r from-accent-500/40 to-accent-600/40 blur-sm -z-10"
                   ></motion.div>
                 </span>
               </h1>
@@ -126,7 +126,7 @@ export const Home = () => {
 
                   <button
                     onClick={() => setReadMore(!readMore)}
-                    className="inline-flex items-center space-x-2 text-accent-400 hover:text-accent-300 font-semibold group"
+                    className="inline-flex items-center space-x-2 text-accent-300 hover:text-accent-200 font-semibold group"
                   >
                     <span>{readMore ? 'Read Less' : 'Read More'}</span>
                     <ChevronDown className={`h-4 w-4 transition-transform ${readMore ? 'rotate-180' : ''}`} />
@@ -137,7 +137,7 @@ export const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link
                   to="/courses"
-                  className="group px-8 py-4 bg-accent-500 text-white rounded-full hover:shadow-colored-amber hover:-translate-y-1 hover:bg-accent-600 transition-all font-semibold inline-flex items-center justify-center space-x-2"
+                  className="group px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-brand hover:-translate-y-1 hover:shadow-xl transition-all font-semibold inline-flex items-center justify-center space-x-2"
                 >
                   <span>Explore Courses</span>
                   <svg className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -168,7 +168,7 @@ export const Home = () => {
                   rotate: { duration: 30, repeat: Infinity, ease: "linear" },
                   scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="absolute inset-0 bg-gradient-to-br from-accent-500/20 to-blue-500/20 rounded-full blur-3xl"
+                className="absolute inset-0 bg-gradient-to-br from-accent-500/20 to-primary-600/20 rounded-full blur-3xl"
               ></motion.div>
 
               <motion.div
@@ -194,7 +194,7 @@ export const Home = () => {
                   rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                   opacity: { delay: 0.8, duration: 0.6 }
                 }}
-                className="absolute top-8 -right-4 backdrop-blur-md bg-accent-500/90 text-white px-8 py-4 rounded-3xl shadow-colored-amber border border-white/20"
+                className="absolute top-8 -right-4 backdrop-blur-md bg-gradient-to-br from-accent-500 to-accent-600 text-white px-8 py-4 rounded-3xl shadow-brand border border-white/20"
               >
                 <div className="text-sm font-semibold">Classes</div>
                 <div className="text-4xl font-bold">6-12</div>
@@ -213,7 +213,7 @@ export const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl text-primary-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-800 mb-4">
               Success Stories & Results
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -231,8 +231,8 @@ export const Home = () => {
             >
               <div className="bg-gradient-to-br from-slate-50 to-primary-50/30 rounded-3xl p-8 h-full border border-slate-200">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-bold text-primary-900 flex items-center gap-2">
-                    <Quote className="h-6 w-6 text-accent-500" />
+                  <h3 className="text-2xl font-bold text-primary-800 flex items-center gap-2">
+                    <Quote className="h-6 w-6 text-accent-600" />
                     Student & Parent Reviews
                   </h3>
                   <div className="flex gap-2">
@@ -260,7 +260,7 @@ export const Home = () => {
                     <div>
                       <div className="flex items-center gap-2 mb-4">
                         {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                          <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
+                          <Star key={i} className="h-5 w-5 fill-accent-500 text-accent-500" />
                         ))}
                       </div>
                       <p className="text-lg text-slate-700 leading-relaxed italic">
@@ -268,7 +268,7 @@ export const Home = () => {
                       </p>
                     </div>
                     <div className="pt-4 border-t border-slate-200">
-                      <p className="font-bold text-primary-900">{testimonials[currentTestimonial].name}</p>
+                      <p className="font-bold text-primary-800">{testimonials[currentTestimonial].name}</p>
                       <p className="text-sm text-slate-600">{testimonials[currentTestimonial].role}</p>
                     </div>
                   </motion.div>
@@ -283,13 +283,13 @@ export const Home = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-1"
             >
-              <div className="bg-gradient-to-br from-accent-500 to-amber-600 rounded-3xl p-8 h-full text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+              <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-3xl p-8 h-full text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent-500/20 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
-                    <Trophy className="h-6 w-6" />
+                    <Trophy className="h-6 w-6 text-accent-200" />
                     <h3 className="text-xl font-bold">Latest Board Result</h3>
                   </div>
 
@@ -316,7 +316,7 @@ export const Home = () => {
 
                   <Link
                     to="/contact"
-                    className="mt-6 flex items-center justify-center gap-2 bg-white text-accent-600 px-6 py-3 rounded-full font-semibold hover:shadow-soft hover:scale-105 transition-all"
+                    className="mt-6 flex items-center justify-center gap-2 bg-white text-primary-700 px-6 py-3 rounded-full font-semibold hover:shadow-soft hover:scale-105 transition-all"
                   >
                     <span>Join Now</span>
                     <ArrowRight className="h-4 w-4" />
@@ -338,7 +338,7 @@ export const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl text-primary-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-800 mb-4">
               Why Choose Arambhik Academy?
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -352,29 +352,29 @@ export const Home = () => {
                 icon: BookOpen,
                 title: 'Complete CBSE/ICSE Coverage',
                 description: 'Full syllabus for Classes 6th to 12th with focus on board exam patterns',
-                gradient: 'from-blue-500/10 to-blue-600/5',
-                iconColor: 'text-blue-600'
+                gradient: 'from-primary-500/10 to-primary-600/5',
+                iconColor: 'text-primary-600'
               },
               {
                 icon: Users,
                 title: 'Experienced Teachers',
                 description: 'Learn from subject experts with proven track record in board results',
-                gradient: 'from-amber-500/10 to-amber-600/5',
+                gradient: 'from-accent-500/10 to-accent-600/5',
                 iconColor: 'text-accent-600'
               },
               {
                 icon: Award,
                 title: 'Outstanding Results',
                 description: '95% students score above 85% in board examinations',
-                gradient: 'from-green-500/10 to-green-600/5',
-                iconColor: 'text-green-600'
+                gradient: 'from-primary-600/10 to-primary-700/5',
+                iconColor: 'text-primary-700'
               },
               {
                 icon: TrendingUp,
                 title: 'Daily Homework Support',
                 description: 'Regular assignments, doubt clearing, and concept building sessions',
-                gradient: 'from-purple-500/10 to-purple-600/5',
-                iconColor: 'text-purple-600'
+                gradient: 'from-accent-600/10 to-accent-700/5',
+                iconColor: 'text-accent-700'
               }
             ].map((item, index) => {
               const Icon = item.icon;
@@ -388,7 +388,7 @@ export const Home = () => {
                   className={`group backdrop-blur-md bg-gradient-to-br ${item.gradient} border border-white/40 p-8 rounded-3xl hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-500`}
                 >
                   <Icon className={`h-12 w-12 ${item.iconColor} mb-4 group-hover:scale-110 transition-transform duration-500`} />
-                  <h3 className="text-2xl text-primary-900 mb-3">
+                  <h3 className="text-2xl font-bold text-primary-800 mb-3">
                     {item.title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed">{item.description}</p>
@@ -399,10 +399,10 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white relative overflow-hidden">
+      <section className="py-24 px-4 bg-gradient-to-br from-primary-800 via-primary-900 to-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-accent-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">

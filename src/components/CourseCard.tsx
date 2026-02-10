@@ -81,7 +81,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
 
               <div className="rounded-xl bg-slate-50 border border-slate-200 p-4 mb-2">
                 <div className="flex items-center gap-2 mb-2.5">
-                  <Trophy className="h-4 w-4 text-amber-500" />
+                  <Trophy className="h-4 w-4 text-accent-600" />
                   <h4 className="text-sm font-semibold text-slate-800 uppercase tracking-wider">
                     Outcome
                   </h4>

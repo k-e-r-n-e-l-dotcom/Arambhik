@@ -56,7 +56,7 @@ export const Login = () => {
             <div className="flex justify-center mb-6">
               <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-white shadow-xl p-2">
                 <img
-                  src="/image.png"
+                  src="/logo.png"
                   alt="Arambhik Academy Logo"
                   className="w-full h-full object-contain"
                 />
@@ -76,18 +76,18 @@ export const Login = () => {
               whileHover={{ y: -6, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate('/login?role=student')}
-              className="group relative bg-white rounded-3xl p-10 shadow-soft border-2 border-transparent hover:border-blue-200 hover:shadow-colored-blue transition-all duration-300 text-left"
+              className="group relative bg-white rounded-3xl p-10 shadow-soft border-2 border-transparent hover:border-primary-200 hover:shadow-colored-teal transition-all duration-300 text-left"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-50 to-transparent rounded-3xl" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary-50 to-transparent rounded-3xl" />
               <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                  <GraduationCap className="h-8 w-8 text-blue-400" />
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                  <GraduationCap className="h-8 w-8 text-accent-100" />
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-2 font-montserrat">Student Login</h2>
                 <p className="text-slate-500 text-sm leading-relaxed">
                   Access your classes, study materials, NCERT resources and more
                 </p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-blue-600 group-hover:gap-3 transition-all">
+                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary-600 group-hover:gap-3 transition-all">
                   <span>Continue as Student</span>
                   <ArrowLeft className="h-4 w-4 rotate-180" />
                 </div>
@@ -101,18 +101,18 @@ export const Login = () => {
               whileHover={{ y: -6, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate('/login?role=admin')}
-              className="group relative bg-white rounded-3xl p-10 shadow-soft border-2 border-transparent hover:border-amber-200 hover:shadow-colored-amber transition-all duration-300 text-left"
+              className="group relative bg-white rounded-3xl p-10 shadow-soft border-2 border-transparent hover:border-accent-200 hover:shadow-colored-blue transition-all duration-300 text-left"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-50 to-transparent rounded-3xl" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent-50 to-transparent rounded-3xl" />
               <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
                   <ShieldCheck className="h-8 w-8 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-2 font-montserrat">Admin Login</h2>
                 <p className="text-slate-500 text-sm leading-relaxed">
                   Manage students, teachers, resources and system settings
                 </p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-amber-600 group-hover:gap-3 transition-all">
+                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-accent-600 group-hover:gap-3 transition-all">
                   <span>Continue as Admin</span>
                   <ArrowLeft className="h-4 w-4 rotate-180" />
                 </div>
@@ -153,7 +153,7 @@ export const Login = () => {
           </div>
 
           <div className="text-center mb-8">
-            <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 ${isAdmin ? 'bg-amber-50 text-amber-700' : 'bg-blue-50 text-blue-700'}`}>
+            <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 ${isAdmin ? 'bg-accent-50 text-accent-700' : 'bg-primary-50 text-primary-700'}`}>
               {isAdmin ? 'Admin Portal' : 'Student Portal'}
             </div>
             <h2 className="text-3xl font-bold text-slate-900 mb-1 font-montserrat">Welcome Back</h2>
@@ -183,7 +183,7 @@ export const Login = () => {
                 required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all text-sm"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 focus:bg-white outline-none transition-all text-sm"
                 placeholder={isAdmin ? 'admin' : 'e.g. AA001'}
               />
             </div>
@@ -198,7 +198,7 @@ export const Login = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 pr-12 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all text-sm"
+                  className="w-full px-4 py-3 pr-12 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 focus:bg-white outline-none transition-all text-sm"
                   placeholder="Enter password"
                 />
                 <button
@@ -214,7 +214,7 @@ export const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 ${isAdmin ? 'bg-gradient-to-r from-amber-500 to-orange-500 shadow-colored-amber' : 'bg-gradient-to-r from-slate-800 to-slate-900 shadow-soft'}`}
+              className={`w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 ${isAdmin ? 'bg-gradient-to-r from-accent-500 to-accent-600 shadow-colored-blue' : 'bg-gradient-to-r from-primary-600 to-primary-700 shadow-colored-teal'}`}
             >
               {isLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />

@@ -35,14 +35,14 @@ export const Navbar = () => {
         <div className="px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 gap-4">
             <Link to="/" className="flex items-center space-x-2 md:space-x-3 group flex-shrink-0">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden group-hover:scale-110 transition-transform duration-300">
+              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden group-hover:scale-110 transition-transform duration-300 bg-white shadow-sm">
                 <img
-                  src="/image.png"
+                  src="/logo.png"
                   alt="Arambhik Academy Logo"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain p-0.5"
                 />
               </div>
-              <span className="text-base md:text-lg font-bold font-montserrat text-primary-900 whitespace-nowrap">Arambhik Academy</span>
+              <span className="text-base md:text-lg font-bold font-montserrat text-primary-800 whitespace-nowrap">Arambhik Academy</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
@@ -52,7 +52,7 @@ export const Navbar = () => {
                     <Link
                       key={link.to}
                       to={link.to}
-                      className="text-sm font-semibold text-slate-600 hover:text-primary-900 transition-colors relative group whitespace-nowrap"
+                      className="text-sm font-semibold text-slate-600 hover:text-primary-700 transition-colors relative group whitespace-nowrap"
                     >
                       {link.label}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 group-hover:w-full transition-all duration-300"></span>
@@ -61,15 +61,15 @@ export const Navbar = () => {
 
                   <Link
                     to="/login?role=student"
-                    className="flex items-center gap-1.5 bg-slate-900 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-blue-900/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/30 transition-all duration-300 border border-white/10 text-sm whitespace-nowrap"
+                    className="flex items-center gap-1.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-primary-600/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-600/30 transition-all duration-300 text-sm whitespace-nowrap"
                   >
-                    <UserCircle size={18} className="text-blue-400" />
+                    <UserCircle size={18} className="text-accent-200" />
                     <span>Student Login</span>
                   </Link>
 
                   <Link
                     to="/login?role=admin"
-                    className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-orange-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/40 transition-all duration-300 text-sm whitespace-nowrap"
+                    className="flex items-center gap-1.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-accent-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-500/40 transition-all duration-300 text-sm whitespace-nowrap"
                   >
                     <ShieldCheck size={18} className="text-white/90" />
                     <span>Admin Login</span>
@@ -80,7 +80,7 @@ export const Navbar = () => {
                   <span className="text-sm text-slate-600 font-medium whitespace-nowrap">Welcome, {profile.full_name}</span>
                   <Link
                     to={dashboardPath}
-                    className="flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-bold shadow-lg hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
+                    className="flex items-center gap-2 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-5 py-2.5 rounded-lg font-bold shadow-lg shadow-primary-600/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
                   >
                     <GraduationCap className="h-5 w-5" />
                     <span>Dashboard</span>
@@ -101,9 +101,9 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-primary-900" />
+                <X className="h-6 w-6 text-primary-700" />
               ) : (
-                <Menu className="h-6 w-6 text-primary-900" />
+                <Menu className="h-6 w-6 text-primary-700" />
               )}
             </button>
           </div>
@@ -124,7 +124,7 @@ export const Navbar = () => {
                       <Link
                         key={link.to}
                         to={link.to}
-                        className="block text-slate-700 hover:text-primary-900 transition-colors py-2 font-medium"
+                        className="block text-slate-700 hover:text-primary-700 transition-colors py-2 font-medium"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {link.label}
@@ -132,7 +132,7 @@ export const Navbar = () => {
                     ))}
                     <Link
                       to="/login?role=student"
-                      className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-semibold"
+                      className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full hover:shadow-lg transition-all font-semibold"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <UserCircle size={20} />
@@ -140,7 +140,7 @@ export const Navbar = () => {
                     </Link>
                     <Link
                       to="/login?role=admin"
-                      className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-colors font-semibold"
+                      className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <ShieldCheck size={20} />
@@ -152,7 +152,7 @@ export const Navbar = () => {
                     <div className="text-slate-600 py-2 font-medium">Welcome, {profile.full_name}</div>
                     <Link
                       to={dashboardPath}
-                      className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-bold shadow-lg hover:bg-blue-700 transition-all"
+                      className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <GraduationCap className="h-5 w-5" />
