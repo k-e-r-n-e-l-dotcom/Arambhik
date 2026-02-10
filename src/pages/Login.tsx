@@ -54,11 +54,11 @@ export const Login = () => {
             className="text-center mb-12"
           >
             <div className="flex justify-center mb-6">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shadow-xl">
+              <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-white shadow-xl p-2">
                 <img
-                  src="/logo.png"
+                  src="/image.png"
                   alt="Arambhik Academy Logo"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>
@@ -143,11 +143,11 @@ export const Login = () => {
 
         <div className="bg-white rounded-3xl shadow-soft-lg p-8 md:p-10 border border-slate-100">
           <div className="flex items-center justify-center mb-8">
-            <div className="relative w-20 h-20 rounded-full overflow-hidden shadow-xl">
+            <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-slate-50 shadow-xl p-2">
               <img
-                src="/image copy.png"
+                src="/image.png"
                 alt="Arambhik Academy Logo"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>

@@ -35,11 +35,11 @@ export const Navbar = () => {
         <div className="px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 gap-4">
             <Link to="/" className="flex items-center space-x-2 md:space-x-3 group flex-shrink-0">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden group-hover:scale-110 transition-transform duration-300 shadow-md">
+              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden group-hover:scale-110 transition-transform duration-300">
                 <img
-                  src="/logo.png"
+                  src="/image.png"
                   alt="Arambhik Academy Logo"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="text-base md:text-lg font-bold font-montserrat text-primary-900 whitespace-nowrap">Arambhik Academy</span>

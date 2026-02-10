@@ -8,11 +8,11 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden shadow-lg">
+              <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-white/10 p-1">
                 <img
-                  src="/logo.png"
+                  src="/image.png"
                   alt="Arambhik Academy Logo"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <h3 className="text-2xl font-bold font-montserrat">
