@@ -1,80 +1,121 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, FileText, Target, ChevronDown, ChevronUp, ExternalLink, Loader2, GraduationCap, LogOut } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { BookOpen, FileText, Download, ExternalLink, Loader2, GraduationCap, LogOut, Map, File } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { supabase, Class, Subject, Chapter } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 
-interface SubjectWithChapters extends Subject {
-  chapters: Chapter[];
-}
-
-interface ClassWithSubjects extends Class {
-  subjects: SubjectWithChapters[];
+interface Material {
+  id: string;
+  title: string;
+  subject: string;
+  class: string;
+  file_url: string | null;
+  type: 'book' | 'notes' | 'mindmap' | 'link';
+  description: string | null;
+  created_at: string;
 }
 
 export const StudentDashboard = () => {
   const { profile, signOut } = useAuth();
   const navigate = useNavigate();
-  const [classesData, setClassesData] = useState<ClassWithSubjects[]>([]);
-  const [selectedClass, setSelectedClass] = useState<string>('');
-  const [currentClassData, setCurrentClassData] = useState<ClassWithSubjects | null>(null);
-  const [expandedChapters, setExpandedChapters] = useState<Set<string>>(new Set());
+  const [materials, setMaterials] = useState<Material[]>([]);
+  const [filteredMaterials, setFilteredMaterials] = useState<Material[]>([]);
+  const [selectedType, setSelectedType] = useState<string>('all');
+  const [selectedSubject, setSelectedSubject] = useState<string>('all');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadAllData();
-  }, []);
+    loadMaterials();
+  }, [profile?.class]);
 
   useEffect(() => {
-    const current = classesData.find((c) => c.name === selectedClass);
-    setCurrentClassData(current || null);
-    setExpandedChapters(new Set());
-  }, [selectedClass, classesData]);
+    filterMaterials();
+  }, [materials, selectedType, selectedSubject]);
 
-  const loadAllData = async () => {
+  const loadMaterials = async () => {
     setLoading(true);
     try {
-      const { data: classes } = await supabase.from('classes').select('*').order('display_order');
-      const result: ClassWithSubjects[] = [];
+      const { data, error } = await supabase
+        .from('materials')
+        .select('*')
+        .eq('class', profile?.class || '')
+        .order('created_at', { ascending: false });
 
-      for (const cls of classes || []) {
-        const { data: subjects } = await supabase.from('subjects').select('*').eq('class_id', cls.id).order('display_order');
-        const subjectsWithChapters: SubjectWithChapters[] = [];
-
-        for (const subject of subjects || []) {
-          const { data: chapters } = await supabase.from('chapters').select('*').eq('subject_id', subject.id).order('display_order');
-          subjectsWithChapters.push({ ...subject, chapters: chapters || [] });
-        }
-        result.push({ ...cls, subjects: subjectsWithChapters });
-      }
-
-      setClassesData(result);
-      const studentClass = profile?.class || '';
-      const match = result.find((c) => c.name === studentClass);
-      setSelectedClass(match ? match.name : result[0]?.name || '');
-    } catch {
-      // silent
+      if (error) throw error;
+      setMaterials(data || []);
+    } catch (error) {
+      console.error('Error loading materials:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  const toggleChapter = (id: string) => {
-    const next = new Set(expandedChapters);
-    next.has(id) ? next.delete(id) : next.add(id);
-    setExpandedChapters(next);
+  const filterMaterials = () => {
+    let filtered = [...materials];
+
+    if (selectedType !== 'all') {
+      filtered = filtered.filter((m) => m.type === selectedType);
+    }
+
+    if (selectedSubject !== 'all') {
+      filtered = filtered.filter((m) => m.subject === selectedSubject);
+    }
+
+    setFilteredMaterials(filtered);
   };
+
+  const uniqueSubjects = Array.from(new Set(materials.map((m) => m.subject)));
 
   const handleLogout = async () => {
     await signOut();
     navigate('/');
   };
 
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case 'book':
+        return <BookOpen className="h-5 w-5" />;
+      case 'notes':
+        return <FileText className="h-5 w-5" />;
+      case 'mindmap':
+        return <Map className="h-5 w-5" />;
+      case 'link':
+        return <ExternalLink className="h-5 w-5" />;
+      default:
+        return <File className="h-5 w-5" />;
+    }
+  };
+
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'book':
+        return 'bg-primary-100 text-primary-700';
+      case 'notes':
+        return 'bg-accent-100 text-accent-700';
+      case 'mindmap':
+        return 'bg-primary-100 text-primary-600';
+      case 'link':
+        return 'bg-accent-100 text-accent-600';
+      default:
+        return 'bg-slate-100 text-slate-700';
+    }
+  };
+
+  const getTypeBadge = (type: string) => {
+    const labels = {
+      book: 'Book',
+      notes: 'Notes',
+      mindmap: 'Mind Map',
+      link: 'NCERT Link'
+    };
+    return labels[type as keyof typeof labels] || type;
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center pt-20">
-        <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary-600" />
       </div>
     );
   }
@@ -82,163 +123,246 @@ export const StudentDashboard = () => {
   return (
     <div className="min-h-screen bg-slate-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
-        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8"
+        >
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-                <GraduationCap className="h-5 w-5 text-blue-600" />
+              <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
+                <GraduationCap className="h-5 w-5 text-primary-600" />
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-slate-900 font-montserrat">
                   Welcome, {profile?.full_name}
                 </h1>
-                <p className="text-sm text-slate-500">{profile?.class || 'Student'} - {profile?.username}</p>
+                <p className="text-sm text-slate-500">
+                  {profile?.class || 'Student'} - {profile?.username}
+                </p>
               </div>
             </div>
           </div>
-          <button onClick={handleLogout} className="flex items-center gap-2 px-4 py-2.5 bg-red-50 text-red-600 rounded-xl text-sm font-semibold hover:bg-red-100 transition-colors">
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2.5 bg-red-50 text-red-600 rounded-xl text-sm font-semibold hover:bg-red-100 transition-colors"
+          >
             <LogOut className="h-4 w-4" />
             Sign Out
           </button>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl p-5 shadow-soft border border-slate-100">
-            <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mb-3">
-              <Target className="h-5 w-5 text-blue-600" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white rounded-2xl p-5 shadow-soft border border-slate-100"
+          >
+            <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center mb-3">
+              <BookOpen className="h-5 w-5 text-primary-600" />
             </div>
-            <p className="text-xs text-slate-500 font-medium">Chapters</p>
-            <p className="text-2xl font-bold text-slate-900">{currentClassData?.subjects.reduce((s, sub) => s + sub.chapters.length, 0) || 0}</p>
+            <p className="text-xs text-slate-500 font-medium">Total Materials</p>
+            <p className="text-2xl font-bold text-slate-900">{materials.length}</p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="bg-white rounded-2xl p-5 shadow-soft border border-slate-100">
-            <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center mb-3">
-              <BookOpen className="h-5 w-5 text-emerald-600" />
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 }}
+            className="bg-white rounded-2xl p-5 shadow-soft border border-slate-100"
+          >
+            <div className="w-10 h-10 bg-accent-100 rounded-xl flex items-center justify-center mb-3">
+              <FileText className="h-5 w-5 text-accent-600" />
             </div>
-            <p className="text-xs text-slate-500 font-medium">Subjects</p>
-            <p className="text-2xl font-bold text-slate-900">{currentClassData?.subjects.length || 0}</p>
+            <p className="text-xs text-slate-500 font-medium">Books</p>
+            <p className="text-2xl font-bold text-slate-900">
+              {materials.filter((m) => m.type === 'book').length}
+            </p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-2xl p-5 shadow-soft border border-slate-100 col-span-2 md:col-span-1">
-            <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center mb-3">
-              <FileText className="h-5 w-5 text-amber-600" />
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white rounded-2xl p-5 shadow-soft border border-slate-100"
+          >
+            <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center mb-3">
+              <Map className="h-5 w-5 text-primary-600" />
             </div>
-            <p className="text-xs text-slate-500 font-medium">Your Class</p>
-            <p className="text-2xl font-bold text-slate-900">{selectedClass || '-'}</p>
+            <p className="text-xs text-slate-500 font-medium">Mind Maps</p>
+            <p className="text-2xl font-bold text-slate-900">
+              {materials.filter((m) => m.type === 'mindmap').length}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 }}
+            className="bg-white rounded-2xl p-5 shadow-soft border border-slate-100"
+          >
+            <div className="w-10 h-10 bg-accent-100 rounded-xl flex items-center justify-center mb-3">
+              <ExternalLink className="h-5 w-5 text-accent-600" />
+            </div>
+            <p className="text-xs text-slate-500 font-medium">NCERT Links</p>
+            <p className="text-2xl font-bold text-slate-900">
+              {materials.filter((m) => m.type === 'link').length}
+            </p>
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="mb-8">
-          <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Select Class</h3>
-          <div className="flex flex-wrap gap-2">
-            {classesData.map((cls) => (
+        <div className="mb-6 space-y-4">
+          <div>
+            <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">
+              Filter by Type
+            </h3>
+            <div className="flex flex-wrap gap-2">
               <button
-                key={cls.id}
-                onClick={() => setSelectedClass(cls.name)}
+                onClick={() => setSelectedType('all')}
                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                  selectedClass === cls.name
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:border-blue-300 hover:bg-blue-50'
+                  selectedType === 'all'
+                    ? 'bg-primary-600 text-white shadow-lg shadow-primary-200'
+                    : 'bg-white text-slate-600 border border-slate-200 hover:border-primary-300 hover:bg-primary-50'
                 }`}
               >
-                {cls.name}
+                All Materials
               </button>
-            ))}
+              {['book', 'notes', 'mindmap', 'link'].map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setSelectedType(type)}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    selectedType === type
+                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-200'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-primary-300 hover:bg-primary-50'
+                  }`}
+                >
+                  {getTypeBadge(type)}
+                </button>
+              ))}
+            </div>
           </div>
-        </motion.div>
 
-        <div className="space-y-6">
-          {currentClassData?.subjects.map((subject, idx) => (
-            <motion.div
-              key={subject.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.05 }}
-              className="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden"
-            >
-              <div className="p-6 border-b border-slate-100">
-                <div className="flex items-center gap-3">
-                  <div className={`${subject.color || 'bg-blue-500'} w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-sm`}>
-                    {subject.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-slate-900">{subject.name}</h3>
-                    <p className="text-sm text-slate-500">{subject.chapters.length} chapters available</p>
-                  </div>
-                </div>
+          {uniqueSubjects.length > 0 && (
+            <div>
+              <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                Filter by Subject
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedSubject('all')}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    selectedSubject === 'all'
+                      ? 'bg-accent-600 text-white shadow-lg shadow-accent-200'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-accent-300 hover:bg-accent-50'
+                  }`}
+                >
+                  All Subjects
+                </button>
+                {uniqueSubjects.map((subject) => (
+                  <button
+                    key={subject}
+                    onClick={() => setSelectedSubject(subject)}
+                    className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                      selectedSubject === subject
+                        ? 'bg-accent-600 text-white shadow-lg shadow-accent-200'
+                        : 'bg-white text-slate-600 border border-slate-200 hover:border-accent-300 hover:bg-accent-50'
+                    }`}
+                  >
+                    {subject}
+                  </button>
+                ))}
               </div>
-
-              <div className="divide-y divide-slate-50">
-                {subject.chapters.map((chapter) => {
-                  const isExpanded = expandedChapters.has(chapter.id);
-                  return (
-                    <div key={chapter.id} className="hover:bg-slate-50/50 transition-colors">
-                      <div className="p-4 md:p-5 flex items-start justify-between gap-4">
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-slate-900 text-sm md:text-base">{chapter.title}</h4>
-                          <div className="flex flex-wrap gap-2 mt-2">
-                            {chapter.ncert_link && (
-                              <a
-                                href={chapter.ncert_link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-xs font-semibold hover:bg-blue-100 transition-colors"
-                              >
-                                <ExternalLink className="h-3.5 w-3.5" />
-                                NCERT Textbook
-                              </a>
-                            )}
-                            {chapter.notes && (
-                              <button
-                                onClick={() => toggleChapter(chapter.id)}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold hover:bg-emerald-100 transition-colors"
-                              >
-                                <FileText className="h-3.5 w-3.5" />
-                                Study Notes
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                        {chapter.notes && (
-                          <button onClick={() => toggleChapter(chapter.id)} className="p-2 hover:bg-slate-100 rounded-lg transition-colors flex-shrink-0">
-                            {isExpanded ? <ChevronUp className="h-5 w-5 text-slate-400" /> : <ChevronDown className="h-5 w-5 text-slate-400" />}
-                          </button>
-                        )}
-                      </div>
-
-                      <AnimatePresence>
-                        {isExpanded && chapter.notes && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden"
-                          >
-                            <div className="px-5 pb-5">
-                              <div className="bg-slate-50 rounded-xl p-5 border border-slate-100">
-                                <div className="flex items-center gap-2 mb-3">
-                                  <FileText className="h-4 w-4 text-emerald-600" />
-                                  <h5 className="text-sm font-bold text-slate-900">Study Notes</h5>
-                                </div>
-                                <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">{chapter.notes}</p>
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
+            </div>
+          )}
         </div>
 
-        {(!currentClassData || currentClassData.subjects.length === 0) && (
-          <div className="text-center py-20">
-            <FileText className="mx-auto text-slate-300 mb-4" size={48} />
-            <p className="text-lg font-bold text-slate-500">No content available for this class yet</p>
-            <p className="text-sm text-slate-400 mt-1">Check back soon for study materials</p>
-          </div>
-        )}
+        <div className="space-y-4">
+          {filteredMaterials.length === 0 ? (
+            <div className="text-center py-20 bg-white rounded-2xl border border-slate-100">
+              <FileText className="mx-auto text-slate-300 mb-4" size={48} />
+              <p className="text-lg font-bold text-slate-500">No materials available</p>
+              <p className="text-sm text-slate-400 mt-1">
+                Check back soon for study materials
+              </p>
+            </div>
+          ) : (
+            filteredMaterials.map((material, idx) => (
+              <motion.div
+                key={material.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05 }}
+                className="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-lg transition-shadow"
+              >
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className={`${getTypeColor(material.type)} w-10 h-10 rounded-xl flex items-center justify-center`}>
+                          {getTypeIcon(material.type)}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-slate-900">
+                            {material.title}
+                          </h3>
+                          <div className="flex flex-wrap items-center gap-2 mt-1">
+                            <span className="text-xs font-semibold text-primary-700 bg-primary-50 px-2 py-1 rounded-lg">
+                              {material.subject}
+                            </span>
+                            <span className="text-xs font-semibold text-accent-700 bg-accent-50 px-2 py-1 rounded-lg">
+                              Class {material.class}
+                            </span>
+                            <span className={`text-xs font-semibold ${getTypeColor(material.type)} px-2 py-1 rounded-lg`}>
+                              {getTypeBadge(material.type)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {material.description && (
+                        <p className="text-sm text-slate-600 mt-3 leading-relaxed">
+                          {material.description}
+                        </p>
+                      )}
+
+                      <div className="flex items-center gap-2 mt-3 text-xs text-slate-400">
+                        <span>
+                          Uploaded on {new Date(material.created_at).toLocaleDateString()}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex-shrink-0">
+                      {material.type === 'link' ? (
+                        <a
+                          href={material.file_url || '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl text-sm font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Open Link
+                        </a>
+                      ) : (
+                        <a
+                          href={material.file_url || '#'}
+                          download
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-xl text-sm font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                        >
+                          <Download className="h-4 w-4" />
+                          Download
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

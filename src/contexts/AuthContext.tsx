@@ -14,6 +14,9 @@ export interface Profile {
   mother_mobile: string | null;
   student_mobile: string | null;
   teacher_subject: string | null;
+  address: string | null;
+  attendance_percentage: number | null;
+  marks: number | null;
   created_at: string;
   updated_at: string;
 }

@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Star, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 
 export const Home = () => {
   const [readMore, setReadMore] = useState(false);
@@ -35,21 +36,19 @@ export const Home = () => {
     }
   ];
 
-  const recentResults = [
-    { name: "Rahul Singh", class: "12th CBSE", score: "97.4%", subject: "Science", year: "2024" },
-    { name: "Sneha Patel", class: "10th ICSE", score: "95.8%", subject: "All Subjects", year: "2024" },
-    { name: "Arjun Mehta", class: "12th CBSE", score: "96.2%", subject: "Commerce", year: "2024" },
-    { name: "Kavya Reddy", class: "10th CBSE", score: "94.6%", subject: "All Subjects", year: "2024" }
-  ];
-
+  const [recentResults, setRecentResults] = useState<Array<{ name: string; class: string; score: string; subject: string; year: string }>>([
+    { name: "Loading...", class: "", score: "0%", subject: "All Subjects", year: "2024" }
+  ]);
 
   useEffect(() => {
+    loadLeaderboard();
+
     const testimonialInterval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
 
     const resultInterval = setInterval(() => {
-      setCurrentResult((prev) => (prev + 1) % recentResults.length);
+      setCurrentResult((prev) => (prev + 1) % (recentResults.length || 1));
     }, 3000);
 
     return () => {
@@ -57,6 +56,31 @@ export const Home = () => {
       clearInterval(resultInterval);
     };
   }, []);
+
+  const loadLeaderboard = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('leaderboard')
+        .select('*, profiles(full_name, class)')
+        .order('rank', { ascending: true })
+        .limit(3);
+
+      if (error) throw error;
+
+      if (data && data.length > 0) {
+        const formattedResults = data.map((entry: any) => ({
+          name: entry.profiles?.full_name || 'Student',
+          class: entry.profiles?.class || 'N/A',
+          score: `${entry.score}%`,
+          subject: 'All Subjects',
+          year: new Date().getFullYear().toString()
+        }));
+        setRecentResults(formattedResults);
+      }
+    } catch (error) {
+      console.error('Error loading leaderboard:', error);
+    }
+  };
 
   return (
     <div className="min-h-screen">
