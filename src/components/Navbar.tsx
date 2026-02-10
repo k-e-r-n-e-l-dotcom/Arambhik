@@ -15,14 +15,15 @@ export const Navbar = () => {
     setMobileMenuOpen(false);
   };
 
-  const dashboardPath = profile?.role === 'admin' ? '/admin' : '/student';
+  const dashboardPath = (profile?.role === 'admin' || profile?.role === 'teacher') ? '/teachers-corner' : '/student-corner';
 
   const publicLinks = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About Us' },
     { to: '/courses', label: 'Courses' },
     { to: '/centers', label: 'Centers' },
-    { to: '/contact', label: 'Contact' }
+    { to: '/contact', label: 'Contact' },
+    { to: '/student-corner', label: 'Student Corner' }
   ];
 
   return (
@@ -60,19 +61,11 @@ export const Navbar = () => {
                   ))}
 
                   <Link
-                    to="/login?role=student"
-                    className="flex items-center gap-1.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-primary-600/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-600/30 transition-all duration-300 text-sm whitespace-nowrap"
-                  >
-                    <UserCircle size={18} className="text-accent-200" />
-                    <span>Student Login</span>
-                  </Link>
-
-                  <Link
-                    to="/login?role=admin"
+                    to="/login?role=teacher"
                     className="flex items-center gap-1.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-accent-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-500/40 transition-all duration-300 text-sm whitespace-nowrap"
                   >
                     <ShieldCheck size={18} className="text-white/90" />
-                    <span>Admin Login</span>
+                    <span>Teachers Corner</span>
                   </Link>
                 </>
               ) : (
@@ -131,20 +124,12 @@ export const Navbar = () => {
                       </Link>
                     ))}
                     <Link
-                      to="/login?role=student"
-                      className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-full hover:shadow-lg transition-all font-semibold"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <UserCircle size={20} />
-                      <span>Student Login</span>
-                    </Link>
-                    <Link
-                      to="/login?role=admin"
+                      to="/login?role=teacher"
                       className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <ShieldCheck size={20} />
-                      <span>Admin Login</span>
+                      <span>Teachers Corner</span>
                     </Link>
                   </>
                 ) : (

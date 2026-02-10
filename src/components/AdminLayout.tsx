@@ -14,10 +14,10 @@ import { useState, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-  { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/admin/students', label: 'Students', icon: Users },
-  { to: '/admin/teachers', label: 'Teachers', icon: GraduationCap },
-  { to: '/admin/resources', label: 'Study Materials', icon: BookOpen },
+  { to: '/teachers-corner', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/teachers-corner/students', label: 'Students', icon: Users },
+  { to: '/teachers-corner/teachers', label: 'Teachers', icon: GraduationCap },
+  { to: '/teachers-corner/resources', label: 'Study Materials', icon: BookOpen },
 ];
 
 export const AdminLayout = ({ children }: { children: ReactNode }) => {
@@ -32,7 +32,7 @@ export const AdminLayout = ({ children }: { children: ReactNode }) => {
   };
 
   const isActive = (path: string) => {
-    if (path === '/admin') return pathname === '/admin';
+    if (path === '/teachers-corner') return pathname === '/teachers-corner';
     return pathname.startsWith(path);
   };
 
@@ -66,7 +66,7 @@ export const AdminLayout = ({ children }: { children: ReactNode }) => {
           <div className="p-5 border-b border-slate-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Admin Panel</p>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Teachers Corner</p>
                 <p className="text-sm font-bold text-slate-900 mt-1 truncate">{profile?.full_name}</p>
               </div>
               <button className="lg:hidden p-1" onClick={() => setSidebarOpen(false)}>

@@ -193,7 +193,7 @@ export const AdminDashboard = () => {
     <AdminLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900 font-montserrat">Admin Dashboard</h1>
+          <h1 className="text-3xl font-bold text-slate-900 font-montserrat">Teachers Corner</h1>
           <p className="text-slate-600 mt-1">Manage students, materials, and leaderboard</p>
         </div>
 

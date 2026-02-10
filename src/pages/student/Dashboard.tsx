@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, FileText, Download, ExternalLink, Loader2, GraduationCap, LogOut, Map, File } from 'lucide-react';
+import { BookOpen, FileText, Download, ExternalLink, Loader2, GraduationCap, Map, File } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useAuth } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 
 interface Material {
@@ -17,21 +15,20 @@ interface Material {
 }
 
 export const StudentDashboard = () => {
-  const { profile, signOut } = useAuth();
-  const navigate = useNavigate();
   const [materials, setMaterials] = useState<Material[]>([]);
   const [filteredMaterials, setFilteredMaterials] = useState<Material[]>([]);
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedSubject, setSelectedSubject] = useState<string>('all');
+  const [selectedClass, setSelectedClass] = useState<string>('all');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     loadMaterials();
-  }, [profile?.class]);
+  }, [selectedClass]);
 
   useEffect(() => {
     filterMaterials();
-  }, [materials, selectedType, selectedSubject]);
+  }, [materials, selectedType, selectedSubject, selectedClass]);
 
   const loadMaterials = async () => {
     setLoading(true);
@@ -39,7 +36,6 @@ export const StudentDashboard = () => {
       const { data, error } = await supabase
         .from('materials')
         .select('*')
-        .eq('class', profile?.class || '')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -54,6 +50,10 @@ export const StudentDashboard = () => {
   const filterMaterials = () => {
     let filtered = [...materials];
 
+    if (selectedClass !== 'all') {
+      filtered = filtered.filter((m) => m.class === selectedClass);
+    }
+
     if (selectedType !== 'all') {
       filtered = filtered.filter((m) => m.type === selectedType);
     }
@@ -65,12 +65,8 @@ export const StudentDashboard = () => {
     setFilteredMaterials(filtered);
   };
 
+  const uniqueClasses = Array.from(new Set(materials.map((m) => m.class))).sort();
   const uniqueSubjects = Array.from(new Set(materials.map((m) => m.subject)));
-
-  const handleLogout = async () => {
-    await signOut();
-    navigate('/');
-  };
 
   const getTypeIcon = (type: string) => {
     switch (type) {
@@ -128,28 +124,19 @@ export const StudentDashboard = () => {
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8"
         >
-          <div>
-            <div className="flex items-center gap-3 mb-1">
-              <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
-                <GraduationCap className="h-5 w-5 text-primary-600" />
-              </div>
-              <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-slate-900 font-montserrat">
-                  Welcome, {profile?.full_name}
-                </h1>
-                <p className="text-sm text-slate-500">
-                  {profile?.class || 'Student'} - {profile?.username}
-                </p>
-              </div>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
+              <GraduationCap className="h-5 w-5 text-primary-600" />
+            </div>
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 font-montserrat">
+                Student Corner
+              </h1>
+              <p className="text-sm text-slate-500">
+                Access all study materials and resources
+              </p>
             </div>
           </div>
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2.5 bg-red-50 text-red-600 rounded-xl text-sm font-semibold hover:bg-red-100 transition-colors"
-          >
-            <LogOut className="h-4 w-4" />
-            Sign Out
-          </button>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -212,6 +199,39 @@ export const StudentDashboard = () => {
         </div>
 
         <div className="mb-6 space-y-4">
+          {uniqueClasses.length > 0 && (
+            <div>
+              <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                Filter by Class
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedClass('all')}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    selectedClass === 'all'
+                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-200'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-primary-300 hover:bg-primary-50'
+                  }`}
+                >
+                  All Classes
+                </button>
+                {uniqueClasses.map((cls) => (
+                  <button
+                    key={cls}
+                    onClick={() => setSelectedClass(cls)}
+                    className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                      selectedClass === cls
+                        ? 'bg-primary-600 text-white shadow-lg shadow-primary-200'
+                        : 'bg-white text-slate-600 border border-slate-200 hover:border-primary-300 hover:bg-primary-50'
+                    }`}
+                  >
+                    Class {cls}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div>
             <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">
               Filter by Type

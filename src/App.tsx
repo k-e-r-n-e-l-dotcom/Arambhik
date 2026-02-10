@@ -37,12 +37,12 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
 
-              <Route path="/admin" element={<ProtectedRoute requiredRole="admin"><AdminDashboard /></ProtectedRoute>} />
-              <Route path="/admin/students" element={<ProtectedRoute requiredRole="admin"><AdminStudents /></ProtectedRoute>} />
-              <Route path="/admin/teachers" element={<ProtectedRoute requiredRole="admin"><AdminTeachers /></ProtectedRoute>} />
-              <Route path="/admin/resources" element={<ProtectedRoute requiredRole="admin"><AdminResources /></ProtectedRoute>} />
+              <Route path="/teachers-corner" element={<ProtectedRoute requiredRole="teacher"><AdminDashboard /></ProtectedRoute>} />
+              <Route path="/teachers-corner/students" element={<ProtectedRoute requiredRole="teacher"><AdminStudents /></ProtectedRoute>} />
+              <Route path="/teachers-corner/teachers" element={<ProtectedRoute requiredRole="teacher"><AdminTeachers /></ProtectedRoute>} />
+              <Route path="/teachers-corner/resources" element={<ProtectedRoute requiredRole="teacher"><AdminResources /></ProtectedRoute>} />
 
-              <Route path="/student" element={<ProtectedRoute requiredRole="student"><StudentDashboard /></ProtectedRoute>} />
+              <Route path="/student-corner" element={<StudentDashboard />} />
             </Routes>
           </main>
           <Footer />

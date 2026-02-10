@@ -15,7 +15,7 @@ export const Login = () => {
   const [searchParams] = useSearchParams();
   const { profile, signIn, loading } = useAuth();
   const navigate = useNavigate();
-  const role = searchParams.get('role');
+  const role = searchParams.get('role') || 'teacher';
 
   useEffect(() => {
     fetch(API_URL, {
@@ -27,7 +27,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (!loading && profile) {
-      navigate(profile.role === 'admin' ? '/admin' : '/student');
+      navigate((profile.role === 'admin' || profile.role === 'teacher') ? '/teachers-corner' : '/student-corner');
     }
   }, [profile, loading, navigate]);
 
@@ -44,87 +44,7 @@ export const Login = () => {
     }
   };
 
-  if (!role) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 flex items-center justify-center px-4 py-24">
-        <div className="max-w-4xl w-full">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
-          >
-            <div className="flex justify-center mb-6">
-              <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-white shadow-xl p-2">
-                <img
-                  src="/logo.png"
-                  alt="Arambhik Academy Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3 font-montserrat">
-              Welcome to Learning Portal
-            </h1>
-            <p className="text-lg text-slate-500">Select your login type to continue</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <motion.button
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => navigate('/login?role=student')}
-              className="group relative bg-white rounded-3xl p-10 shadow-soft border-2 border-transparent hover:border-primary-200 hover:shadow-colored-teal transition-all duration-300 text-left"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary-50 to-transparent rounded-3xl" />
-              <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                  <GraduationCap className="h-8 w-8 text-accent-100" />
-                </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-2 font-montserrat">Student Login</h2>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Access your classes, study materials, NCERT resources and more
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-primary-600 group-hover:gap-3 transition-all">
-                  <span>Continue as Student</span>
-                  <ArrowLeft className="h-4 w-4 rotate-180" />
-                </div>
-              </div>
-            </motion.button>
-
-            <motion.button
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => navigate('/login?role=admin')}
-              className="group relative bg-white rounded-3xl p-10 shadow-soft border-2 border-transparent hover:border-accent-200 hover:shadow-colored-blue transition-all duration-300 text-left"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent-50 to-transparent rounded-3xl" />
-              <div className="relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
-                  <ShieldCheck className="h-8 w-8 text-white" />
-                </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-2 font-montserrat">Admin Login</h2>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Manage students, teachers, resources and system settings
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-accent-600 group-hover:gap-3 transition-all">
-                  <span>Continue as Admin</span>
-                  <ArrowLeft className="h-4 w-4 rotate-180" />
-                </div>
-              </div>
-            </motion.button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const isAdmin = role === 'admin';
+  const isTeacher = role === 'teacher' || role === 'admin';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 flex items-center justify-center px-4 py-24">
@@ -134,18 +54,18 @@ export const Login = () => {
         className="w-full max-w-md"
       >
         <button
-          onClick={() => navigate('/login')}
+          onClick={() => navigate('/')}
           className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 mb-6 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to login selection
+          Back to home
         </button>
 
         <div className="bg-white rounded-3xl shadow-soft-lg p-8 md:p-10 border border-slate-100">
           <div className="flex items-center justify-center mb-8">
             <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-slate-50 shadow-xl p-2">
               <img
-                src="/image.png"
+                src="/logo.png"
                 alt="Arambhik Academy Logo"
                 className="w-full h-full object-contain"
               />
@@ -153,8 +73,8 @@ export const Login = () => {
           </div>
 
           <div className="text-center mb-8">
-            <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 ${isAdmin ? 'bg-accent-50 text-accent-700' : 'bg-primary-50 text-primary-700'}`}>
-              {isAdmin ? 'Admin Portal' : 'Student Portal'}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-accent-50 text-accent-700">
+              Teachers Corner
             </div>
             <h2 className="text-3xl font-bold text-slate-900 mb-1 font-montserrat">Welcome Back</h2>
             <p className="text-slate-500 text-sm">Enter your credentials to continue</p>
@@ -184,7 +104,7 @@ export const Login = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 focus:bg-white outline-none transition-all text-sm"
-                placeholder={isAdmin ? 'admin' : 'e.g. AA001'}
+                placeholder="Enter username"
               />
             </div>
 
