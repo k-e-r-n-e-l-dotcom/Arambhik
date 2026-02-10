@@ -53,6 +53,15 @@ export const Login = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
+            <div className="flex justify-center mb-6">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden shadow-xl">
+                <img
+                  src="/logo.png"
+                  alt="Arambhik Academy Logo"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3 font-montserrat">
               Welcome to Learning Portal
             </h1>
@@ -134,12 +143,12 @@ export const Login = () => {
 
         <div className="bg-white rounded-3xl shadow-soft-lg p-8 md:p-10 border border-slate-100">
           <div className="flex items-center justify-center mb-8">
-            <div className={`p-4 rounded-2xl shadow-lg ${isAdmin ? 'bg-gradient-to-br from-amber-500 to-orange-500' : 'bg-gradient-to-br from-slate-800 to-slate-900'}`}>
-              {isAdmin ? (
-                <ShieldCheck className="h-10 w-10 text-white" />
-              ) : (
-                <GraduationCap className="h-10 w-10 text-blue-400" />
-              )}
+            <div className="relative w-20 h-20 rounded-full overflow-hidden shadow-xl">
+              <img
+                src="/image copy.png"
+                alt="Arambhik Academy Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
