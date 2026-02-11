@@ -38,10 +38,15 @@ export const StudentDashboard = () => {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
-      setMaterials(data || []);
+      if (error) {
+        console.error('Error loading materials:', error);
+        setMaterials([]);
+      } else {
+        setMaterials(data || []);
+      }
     } catch (error) {
       console.error('Error loading materials:', error);
+      setMaterials([]);
     } finally {
       setLoading(false);
     }
@@ -65,8 +70,8 @@ export const StudentDashboard = () => {
     setFilteredMaterials(filtered);
   };
 
-  const uniqueClasses = Array.from(new Set(materials.map((m) => m.class))).sort();
-  const uniqueSubjects = Array.from(new Set(materials.map((m) => m.subject)));
+  const uniqueClasses = Array.from(new Set(materials.map((m) => m.class).filter(Boolean))).sort();
+  const uniqueSubjects = Array.from(new Set(materials.map((m) => m.subject).filter(Boolean)));
 
   const getTypeIcon = (type: string) => {
     switch (type) {
@@ -324,14 +329,14 @@ export const StudentDashboard = () => {
                         </div>
                         <div className="flex-1">
                           <h3 className="text-lg font-bold text-slate-900">
-                            {material.title}
+                            {material.title || 'Untitled'}
                           </h3>
                           <div className="flex flex-wrap items-center gap-2 mt-1">
                             <span className="text-xs font-semibold text-primary-700 bg-primary-50 px-2 py-1 rounded-lg">
-                              {material.subject}
+                              {material.subject || 'N/A'}
                             </span>
                             <span className="text-xs font-semibold text-accent-700 bg-accent-50 px-2 py-1 rounded-lg">
-                              Class {material.class}
+                              Class {material.class || 'N/A'}
                             </span>
                             <span className={`text-xs font-semibold ${getTypeColor(material.type)} px-2 py-1 rounded-lg`}>
                               {getTypeBadge(material.type)}

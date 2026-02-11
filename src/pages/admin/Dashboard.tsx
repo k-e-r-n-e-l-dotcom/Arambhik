@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Upload, TrendingUp, Calendar, Edit2, Trash2, Plus, Save, X, Loader2, BookOpen, FileText, Map, ExternalLink } from 'lucide-react';
+import { Users, Upload, TrendingUp, Edit2, Trash2, Plus, Save, X, Loader2, BookOpen } from 'lucide-react';
 import { AdminLayout } from '../../components/AdminLayout';
 import { supabase } from '../../lib/supabase';
 import type { Profile } from '../../contexts/AuthContext';
@@ -57,9 +57,13 @@ export const AdminDashboard = () => {
         supabase.from('leaderboard').select('*, profiles(*)').order('rank', { ascending: true }),
       ]);
 
+      if (studentsRes.error) console.error('Error loading students:', studentsRes.error);
+      if (materialsRes.error) console.error('Error loading materials:', materialsRes.error);
+      if (leaderboardRes.error) console.error('Error loading leaderboard:', leaderboardRes.error);
+
       setStudents(studentsRes.data ?? []);
       setMaterials(materialsRes.data ?? []);
-      setLeaderboard(leaderboardRes.data ?? []);
+      setLeaderboard((leaderboardRes.data ?? []).filter((entry: any) => entry.profiles != null));
       setStats({
         students: studentsRes.data?.length ?? 0,
         materials: materialsRes.data?.length ?? 0,
@@ -67,6 +71,10 @@ export const AdminDashboard = () => {
       });
     } catch (error) {
       console.error('Error loading data:', error);
+      setStudents([]);
+      setMaterials([]);
+      setLeaderboard([]);
+      setStats({ students: 0, materials: 0, leaderboardEntries: 0 });
     } finally {
       setLoading(false);
     }
@@ -270,18 +278,22 @@ export const AdminDashboard = () => {
             <div className="bg-white rounded-2xl p-6 shadow-soft border border-slate-100">
               <h2 className="text-xl font-bold text-slate-900 mb-4">Recent Students</h2>
               <div className="space-y-3">
-                {students.slice(0, 5).map((student) => (
-                  <div key={student.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-                    <div>
-                      <p className="font-semibold text-slate-900">{student.full_name}</p>
-                      <p className="text-sm text-slate-500">Class {student.class} - {student.username}</p>
+                {students.length === 0 ? (
+                  <p className="text-center text-slate-500 py-8">No students found</p>
+                ) : (
+                  students.slice(0, 5).map((student) => (
+                    <div key={student.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                      <div>
+                        <p className="font-semibold text-slate-900">{student.full_name || 'N/A'}</p>
+                        <p className="text-sm text-slate-500">Class {student.class || 'N/A'} - {student.username || 'N/A'}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-semibold text-primary-600">{student.attendance_percentage || 0}% Attendance</p>
+                        <p className="text-sm text-slate-500">{student.marks || 0} Marks</p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-sm font-semibold text-primary-600">{student.attendance_percentage || 0}% Attendance</p>
-                      <p className="text-sm text-slate-500">{student.marks || 0} Marks</p>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -290,20 +302,25 @@ export const AdminDashboard = () => {
         {activeTab === 'students' && (
           <div className="space-y-4">
             <div className="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-slate-50 border-b border-slate-200">
-                    <tr>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Name</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Username</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Class</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Attendance</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Marks</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {students.map((student) => (
+              {students.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-slate-500">No students found</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-slate-50 border-b border-slate-200">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Name</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Username</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Class</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Attendance</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Marks</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {students.map((student) => (
                       editingStudent?.id === student.id ? (
                         <tr key={student.id} className="bg-primary-50">
                           <td className="px-6 py-4">
@@ -388,10 +405,11 @@ export const AdminDashboard = () => {
                           </td>
                         </tr>
                       )
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -480,31 +498,37 @@ export const AdminDashboard = () => {
             )}
 
             <div className="space-y-3">
-              {materials.map((material) => (
-                <div key={material.id} className="bg-white rounded-2xl p-6 shadow-soft border border-slate-100 flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-slate-900">{material.title}</h3>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="text-xs font-semibold bg-primary-100 text-primary-700 px-3 py-1 rounded-lg">
-                        {material.subject}
-                      </span>
-                      <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-lg">
-                        Class {material.class}
-                      </span>
-                      <span className="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1 rounded-lg capitalize">
-                        {material.type}
-                      </span>
-                    </div>
-                    {material.description && <p className="text-sm text-slate-600 mt-2">{material.description}</p>}
-                  </div>
-                  <button
-                    onClick={() => handleDeleteMaterial(material.id)}
-                    className="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 flex-shrink-0"
-                  >
-                    <Trash2 className="h-5 w-5" />
-                  </button>
+              {materials.length === 0 ? (
+                <div className="text-center py-12 bg-white rounded-2xl border border-slate-100">
+                  <p className="text-slate-500">No materials uploaded yet</p>
                 </div>
-              ))}
+              ) : (
+                materials.map((material) => (
+                  <div key={material.id} className="bg-white rounded-2xl p-6 shadow-soft border border-slate-100 flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-slate-900">{material.title || 'Untitled'}</h3>
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        <span className="text-xs font-semibold bg-primary-100 text-primary-700 px-3 py-1 rounded-lg">
+                          {material.subject || 'N/A'}
+                        </span>
+                        <span className="text-xs font-semibold bg-accent-100 text-accent-700 px-3 py-1 rounded-lg">
+                          Class {material.class || 'N/A'}
+                        </span>
+                        <span className="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1 rounded-lg capitalize">
+                          {material.type || 'N/A'}
+                        </span>
+                      </div>
+                      {material.description && <p className="text-sm text-slate-600 mt-2">{material.description}</p>}
+                    </div>
+                    <button
+                      onClick={() => handleDeleteMaterial(material.id)}
+                      className="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 flex-shrink-0"
+                    >
+                      <Trash2 className="h-5 w-5" />
+                    </button>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         )}
@@ -512,41 +536,52 @@ export const AdminDashboard = () => {
         {activeTab === 'leaderboard' && (
           <div className="space-y-4">
             <div className="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-slate-50 border-b border-slate-200">
-                    <tr>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Rank</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Student</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Class</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Score</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Update Score</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {leaderboard.map((entry) => (
-                      <tr key={entry.id} className={`hover:bg-slate-50 ${entry.rank <= 3 ? 'bg-primary-50/30' : ''}`}>
-                        <td className="px-6 py-4">
-                          <span className={`text-sm font-bold ${entry.rank <= 3 ? 'text-primary-700' : 'text-slate-600'}`}>
-                            #{entry.rank}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4 text-sm font-medium text-slate-900">{entry.profiles.full_name}</td>
-                        <td className="px-6 py-4 text-sm text-slate-600">{entry.profiles.class}</td>
-                        <td className="px-6 py-4 text-sm font-semibold text-primary-600">{entry.score}</td>
-                        <td className="px-6 py-4">
-                          <input
-                            type="number"
-                            defaultValue={entry.score}
-                            onBlur={(e) => handleUpdateLeaderboard(entry.student_id, parseFloat(e.target.value))}
-                            className="w-24 px-3 py-2 border border-slate-300 rounded-lg text-sm"
-                          />
-                        </td>
+              {leaderboard.length === 0 ? (
+                <div className="text-center py-12">
+                  <p className="text-slate-500">No leaderboard entries yet</p>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-slate-50 border-b border-slate-200">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Rank</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Student</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Class</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Score</th>
+                        <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Update Score</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {leaderboard.map((entry) => {
+                        const profile = entry.profiles;
+                        if (!profile) return null;
+
+                        return (
+                          <tr key={entry.id} className={`hover:bg-slate-50 ${entry.rank <= 3 ? 'bg-primary-50/30' : ''}`}>
+                            <td className="px-6 py-4">
+                              <span className={`text-sm font-bold ${entry.rank <= 3 ? 'text-primary-700' : 'text-slate-600'}`}>
+                                #{entry.rank}
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 text-sm font-medium text-slate-900">{profile.full_name || 'Unknown'}</td>
+                            <td className="px-6 py-4 text-sm text-slate-600">{profile.class || 'N/A'}</td>
+                            <td className="px-6 py-4 text-sm font-semibold text-primary-600">{entry.score || 0}</td>
+                            <td className="px-6 py-4">
+                              <input
+                                type="number"
+                                defaultValue={entry.score || 0}
+                                onBlur={(e) => handleUpdateLeaderboard(entry.student_id, parseFloat(e.target.value) || 0)}
+                                className="w-24 px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
 
             <div className="bg-white rounded-2xl p-6 shadow-soft border border-slate-100">

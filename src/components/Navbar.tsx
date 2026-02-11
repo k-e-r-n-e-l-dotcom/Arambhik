@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { GraduationCap, LogOut, Menu, X, UserCircle, ShieldCheck } from 'lucide-react';
+import { GraduationCap, LogOut, Menu, X, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';

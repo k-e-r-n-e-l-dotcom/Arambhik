@@ -3,6 +3,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 import { Home } from './pages/Home';
 import { About } from './pages/About';
@@ -37,12 +38,12 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
 
-              <Route path="/teachers-corner" element={<ProtectedRoute requiredRole="teacher"><AdminDashboard /></ProtectedRoute>} />
-              <Route path="/teachers-corner/students" element={<ProtectedRoute requiredRole="teacher"><AdminStudents /></ProtectedRoute>} />
-              <Route path="/teachers-corner/teachers" element={<ProtectedRoute requiredRole="teacher"><AdminTeachers /></ProtectedRoute>} />
-              <Route path="/teachers-corner/resources" element={<ProtectedRoute requiredRole="teacher"><AdminResources /></ProtectedRoute>} />
+              <Route path="/teachers-corner" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminDashboard /></ProtectedRoute></ErrorBoundary>} />
+              <Route path="/teachers-corner/students" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminStudents /></ProtectedRoute></ErrorBoundary>} />
+              <Route path="/teachers-corner/teachers" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminTeachers /></ProtectedRoute></ErrorBoundary>} />
+              <Route path="/teachers-corner/resources" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminResources /></ProtectedRoute></ErrorBoundary>} />
 
-              <Route path="/student-corner" element={<StudentDashboard />} />
+              <Route path="/student-corner" element={<ErrorBoundary><StudentDashboard /></ErrorBoundary>} />
             </Routes>
           </main>
           <Footer />

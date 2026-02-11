@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { GraduationCap, ShieldCheck, LogIn, Loader2, ArrowLeft, Eye, EyeOff } from 'lucide-react';
+import { LogIn, Loader2, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 
 const API_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/manage-users`;
 
@@ -12,10 +12,8 @@ export const Login = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [searchParams] = useSearchParams();
   const { profile, signIn, loading } = useAuth();
   const navigate = useNavigate();
-  const role = searchParams.get('role') || 'teacher';
 
   useEffect(() => {
     fetch(API_URL, {
@@ -43,8 +41,6 @@ export const Login = () => {
       setIsLoading(false);
     }
   };
-
-  const isTeacher = role === 'teacher' || role === 'admin';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 flex items-center justify-center px-4 py-24">
@@ -134,7 +130,7 @@ export const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 ${isAdmin ? 'bg-gradient-to-r from-accent-500 to-accent-600 shadow-colored-blue' : 'bg-gradient-to-r from-primary-600 to-primary-700 shadow-colored-teal'}`}
+              className="w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 bg-gradient-to-r from-accent-500 to-accent-600 shadow-colored-blue"
             >
               {isLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
@@ -149,17 +145,10 @@ export const Login = () => {
 
           <div className="mt-6 p-4 bg-slate-50 rounded-xl border border-slate-100">
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Default Credentials</p>
-            {isAdmin ? (
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-500">Admin</span>
-                <span className="font-mono font-semibold text-slate-800">admin / admin123</span>
-              </div>
-            ) : (
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-500">Student</span>
-                <span className="font-mono font-semibold text-slate-800">AA001 / AA@1234</span>
-              </div>
-            )}
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-slate-500">Teacher</span>
+              <span className="font-mono font-semibold text-slate-800">teacher / password</span>
+            </div>
           </div>
         </div>
       </motion.div>
