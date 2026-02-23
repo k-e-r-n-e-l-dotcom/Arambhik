@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Star, Trophy } from 'lucide-react';
+import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Star, Trophy, Microscope, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
@@ -373,25 +373,25 @@ export const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                icon: Users,
-                title: 'Experienced Teachers',
-                description: 'Learn from subject experts with proven track record in board results',
+                icon: BookOpen,
+                title: 'Learning by Doing',
+                description: 'Hands-on practical approach where students learn through experiments, projects, and real-world applications',
+                gradient: 'from-primary-500/10 to-primary-600/5',
+                iconColor: 'text-primary-600'
+              },
+              {
+                icon: Microscope,
+                title: 'Dedicated Science & Computer Labs',
+                description: 'State-of-the-art laboratory facilities for science experiments and computer practice sessions',
                 gradient: 'from-accent-500/10 to-accent-600/5',
                 iconColor: 'text-accent-600'
               },
               {
-                icon: Award,
-                title: 'Outstanding Results',
-                description: '95% students score above 85% in board examinations',
+                icon: User,
+                title: 'Individual Support to Students',
+                description: 'Personalized attention and one-on-one guidance to address each student\'s unique learning needs',
                 gradient: 'from-primary-600/10 to-primary-700/5',
                 iconColor: 'text-primary-700'
-              },
-              {
-                icon: TrendingUp,
-                title: 'Daily Homework Support',
-                description: 'Regular assignments, doubt clearing, and concept building sessions',
-                gradient: 'from-accent-600/10 to-accent-700/5',
-                iconColor: 'text-accent-700'
               }
             ].map((item, index) => {
               const Icon = item.icon;
