@@ -373,13 +373,6 @@ export const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                icon: BookOpen,
-                title: 'Complete CBSE/ICSE Coverage',
-                description: 'Full syllabus for Classes 6th to 12th with focus on board exam patterns',
-                gradient: 'from-primary-500/10 to-primary-600/5',
-                iconColor: 'text-primary-600'
-              },
-              {
                 icon: Users,
                 title: 'Experienced Teachers',
                 description: 'Learn from subject experts with proven track record in board results',
