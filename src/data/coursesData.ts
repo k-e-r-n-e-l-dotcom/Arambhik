@@ -29,7 +29,7 @@ export const courses: CourseData[] = [
       'Spoken English confidence',
     ],
     method:
-      'Step-by-step lessons, practice sheets, guided speaking sessions, and weekly feedback.',
+      'Learning by doing through practice sheets, guided speaking sessions, and weekly feedback with hands-on activities.',
     outcome:
       'Students write clearly, speak confidently, and score higher in English exams.',
   },
@@ -48,44 +48,8 @@ export const courses: CourseData[] = [
       'Real-life tech applications',
     ],
     method:
-      'Hands-on lab practice, mini projects, guided exercises, and live demonstrations.',
+      'Dedicated computer labs with hands-on practice, mini projects, guided exercises, and live demonstrations for practical learning.',
     outcome: 'Students become tech confident and future-ready.',
-  },
-  {
-    title: 'Science Excellence Program',
-    subtitle: 'Physics  ·  Chemistry  ·  Biology',
-    icon: FlaskConical,
-    accent: 'from-primary-600 to-primary-700',
-    accentLight: 'bg-primary-50',
-    accentText: 'text-primary-700',
-    accentBg: 'bg-primary-100',
-    learns: [
-      'Core concepts explained simply',
-      'Formula understanding & application',
-      'Diagrams & numerical solving',
-      'Board exam question patterns',
-    ],
-    method:
-      'Visual explanation, experiments, problem-solving sessions, and revision drills.',
-    outcome: 'Strong fundamentals + confident exam performance.',
-  },
-  {
-    title: 'Mathematics Advanced Program',
-    subtitle: 'Algebra  ·  Calculus  ·  Geometry',
-    icon: Calculator,
-    accent: 'from-accent-600 to-accent-700',
-    accentLight: 'bg-accent-50',
-    accentText: 'text-accent-700',
-    accentBg: 'bg-accent-100',
-    learns: [
-      'Step-by-step concept clarity',
-      'Fast problem-solving methods',
-      'Exam-focused question practice',
-      'Logical thinking development',
-    ],
-    method:
-      'Guided solving, repeated practice, doubt-clearing sessions, and speed drills.',
-    outcome: 'Accuracy, confidence, and higher marks.',
   },
   {
     title: 'Academic Foundation Program',
@@ -102,7 +66,7 @@ export const courses: CourseData[] = [
       'Exam preparation habits',
     ],
     method:
-      'Small batches, personal attention, and daily progress tracking.',
+      'Learning by doing in small batches with personal attention, dedicated lab facilities, and daily progress tracking.',
     outcome: 'Consistent improvement and strong academic base.',
   },
 ];
