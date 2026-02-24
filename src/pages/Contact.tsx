@@ -30,8 +30,8 @@ export const Contact = () => {
       answer: 'Yes, we provide comprehensive study materials, practice sheets, previous year board question papers, and sample papers for all subjects.'
     },
     {
-      question: 'Do you dedicated labs?',
-      answer: 'We have dedicated Science and Computer labs, we encourage learning by doing concept which leads better understanding and creates the better foundation.'
+      question: 'Do you have dedicated labs?',
+      answer: 'Yes, we have dedicated Science and Computer labs, we encourage learning by doing concept which leads better understanding and creates the better foundation.'
     }
   ];
 
