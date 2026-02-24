@@ -1,6 +1,6 @@
 import { MessageCircle } from 'lucide-react';
 
-const PHONE = '919456302847';
+const PHONE = '919557875108';
 const MESSAGE = encodeURIComponent('Hello Arambhik Academy, I want information about classes.');
 const LINK = `https://wa.me/${PHONE}?text=${MESSAGE}`;
 
