@@ -126,7 +126,6 @@ export const Contact = () => {
               <h3 className="text-xl text-primary-900 mb-3">Email Us</h3>
               <p className="text-slate-600 leading-relaxed">
                 support@arambhikacademy.com<br />
-                support@arambhikacademy.com<br />
                 Quick response within 24 hours
               </p>
               <div className="mt-4 inline-flex items-center space-x-2 text-green-600 font-semibold group-hover:text-green-700">
