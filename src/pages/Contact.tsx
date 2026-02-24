@@ -106,8 +106,8 @@ export const Contact = () => {
               <h3 className="text-xl text-primary-900 mb-3">Call Us</h3>
               <p className="text-slate-600 leading-relaxed">
                 +91 9557875108<br />
-                Mon - Sat: 8:00 AM - 8:00 PM<br />
-                Sunday: 9:00 AM - 5:00 PM
+                Tuesday - Sunday : 3:00 PM - 8:00 PM<br />
+                Monday: OFF
               </p>
               <div className="mt-4 inline-flex items-center space-x-2 text-blue-600 font-semibold group-hover:text-blue-700">
                 <span>Call Now</span>
@@ -125,8 +125,8 @@ export const Contact = () => {
               <Mail className="h-12 w-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl text-primary-900 mb-3">Email Us</h3>
               <p className="text-slate-600 leading-relaxed">
-                info@arambhikacademy.com<br />
-                admissions@arambhikacademy.com<br />
+                support@arambhikacademy.com<br />
+                support@arambhikacademy.com<br />
                 Quick response within 24 hours
               </p>
               <div className="mt-4 inline-flex items-center space-x-2 text-green-600 font-semibold group-hover:text-green-700">
