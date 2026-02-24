@@ -97,7 +97,6 @@ export const Centers = () => {
                       support@arambhikacademy.com
                     </a>
                     <a href="mailto:admissions@arambhikacademy.com" className="block hover:text-green-600 transition-colors">
-                      support@arambhikacademy.com
                     </a>
                   </div>
                 </div>
