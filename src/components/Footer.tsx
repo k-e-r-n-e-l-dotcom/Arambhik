@@ -66,7 +66,7 @@ export const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-accent-300 flex-shrink-0" />
                 <a href="mailto:info@arambhikacademy.com" className="text-slate-300 text-sm hover:text-accent-300 transition-colors">
-                  info@arambhikacademy.com
+                  support@arambhikacademy.com
                 </a>
               </div>
             </div>
