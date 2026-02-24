@@ -19,7 +19,7 @@ export const Contact = () => {
     },
     {
       question: 'What is the batch size?',
-      answer: 'We maintain small batch sizes of 15-20 students to ensure personalized attention and effective learning for each student.'
+      answer: 'We maintain small batch sizes of 10-15 students to ensure personalized attention and effective learning for each student.'
     },
     {
       question: 'Do you help with school homework?',
@@ -30,8 +30,8 @@ export const Contact = () => {
       answer: 'Yes, we provide comprehensive study materials, practice sheets, previous year board question papers, and sample papers for all subjects.'
     },
     {
-      question: 'What are the class timings?',
-      answer: 'We have flexible batch timings: Morning (7 AM - 9 AM), After School (4 PM - 6 PM), and Evening (6 PM - 8 PM) to accommodate school schedules.'
+      question: 'Do you dedicated labs?',
+      answer: 'We have dedicated Science and Computer labs, we encourage learning by doing concept which leads better understanding and creates the better foundation.'
     }
   ];
 
