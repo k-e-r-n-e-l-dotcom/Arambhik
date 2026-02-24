@@ -17,9 +17,9 @@ export const Centers = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-5xl md:text-6xl mb-6">Our Campus</h1>
+            <h1 className="text-5xl md:text-6xl mb-6">Our Institute</h1>
             <p className="text-xl text-slate-200 max-w-2xl mx-auto">
-              Visit our state-of-the-art facility in Sainik Colony
+              Visit our state-of-the-art facility in Dehradun
             </p>
           </motion.div>
         </div>
@@ -33,7 +33,7 @@ export const Centers = () => {
             className="backdrop-blur-md bg-white/70 border border-white/40 rounded-3xl shadow-soft-lg overflow-hidden"
           >
             <div className="bg-gradient-to-r from-accent-500 to-accent-600 p-10 text-white">
-              <h2 className="text-4xl mb-3">Main Campus</h2>
+              <h2 className="text-4xl mb-3"></h2>
               <p className="text-lg text-amber-100">Arambhik Academy - Dehradun</p>
             </div>
 
@@ -94,10 +94,10 @@ export const Centers = () => {
                   <h3 className="font-bold text-primary-900 mb-2 text-lg">Email</h3>
                   <div className="text-slate-700 leading-relaxed">
                     <a href="mailto:info@arambhikacademy.com" className="block hover:text-green-600 transition-colors">
-                      info@arambhikacademy.com
+                      support@arambhikacademy.com
                     </a>
                     <a href="mailto:admissions@arambhikacademy.com" className="block hover:text-green-600 transition-colors">
-                      admissions@arambhikacademy.com
+                      support@arambhikacademy.com
                     </a>
                   </div>
                 </div>
@@ -114,23 +114,22 @@ export const Centers = () => {
                 <div>
                   <h3 className="font-bold text-primary-900 mb-2 text-lg">Working Hours</h3>
                   <p className="text-slate-700 leading-relaxed">
-                    Monday - Saturday: 8:00 AM - 8:00 PM<br />
-                    Sunday: 9:00 AM - 5:00 PM
+                    Tuesday - Sunday: 3:00 PM - 8:00 PM<br />
+                    Monday: OFF
                   </p>
                 </div>
               </motion.div>
             </div>
 
             <div className="border-t border-slate-200 p-10 bg-gradient-to-b from-white/50 to-white/30">
-              <h3 className="font-bold text-primary-900 mb-6 text-2xl">Campus Facilities</h3>
+              <h3 className="font-bold text-primary-900 mb-6 text-2xl">Institute Facilities</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  'Air-conditioned Classrooms',
+                  'Dedicated Science Lab',
                   'Digital Library',
                   'Computer Lab',
                   'Free Wi-Fi',
                   'Smart Boards',
-                  'Parking Facility',
                   'Power Backup',
                   'Security System'
                 ].map((facility, index) => (
@@ -155,7 +154,7 @@ export const Centers = () => {
               <div className="text-center">
                 <h3 className="text-2xl mb-4">Ready to Visit?</h3>
                 <p className="text-slate-200 mb-6">
-                  Come explore our campus and see how we can help your child succeed
+                  Come explore our institute and see how we can help your child succeed
                 </p>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=House+No.2+Lane+No.+5+Nakronda+Road+Sainik+Colony+Dehradun"
