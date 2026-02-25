@@ -335,13 +335,6 @@ export const Home = () => {
                 description: 'State-of-the-art laboratory facilities for science experiments and computer practice sessions',
                 gradient: 'from-accent-500/10 to-accent-600/5',
                 iconColor: 'text-accent-600'
-              },
-              {
-                icon: User,
-                title: 'Individual Support to Students',
-                description: 'Personalized attention and one-on-one guidance to address each student\'s unique learning needs',
-                gradient: 'from-primary-600/10 to-primary-700/5',
-                iconColor: 'text-primary-700'
               }
             ].map((item, index) => {
               const Icon = item.icon;
