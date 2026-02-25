@@ -17,9 +17,9 @@ export const Home = () => {
       rating: 5
     },
     {
-      name: "Mr. Rajesh Kumar",
-      role: "Parent of Class 10 Student",
-      quote: "My son's grades improved from 70% to 89% in just one year. The personalized attention and regular homework support made all the difference.",
+      name: "Mrs. Radhika Bandoliya",
+      role: "Parent of Class 5th & 7th Student",
+      quote: "Big thanks to the teachers their dedication towards teaching is truly helping. I can see a great improvement in my childerns. KEEP UP THE GREAT WORK. ",
       rating: 5
     },
     {
@@ -29,9 +29,9 @@ export const Home = () => {
       rating: 5
     },
     {
-      name: "Mrs. Meena Gupta",
-      role: "Parent of Class 8 Student",
-      quote: "Best decision we made! Our daughter now completes homework on time and actually enjoys studying. The teachers are incredibly supportive.",
+      name: "Mrs. Panchal",
+      role: "Parent of Class 9 Student",
+      quote: "Best decision we made! Our son now completes homework on time and actually enjoys studying. The teachers are incredibly supportive.",
       rating: 5
     }
   ];
