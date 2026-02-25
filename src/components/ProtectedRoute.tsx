@@ -5,11 +5,10 @@ import { Loader2 } from 'lucide-react';
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  requiredRole: 'admin' | 'teacher' | 'student';
 }
 
-export const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) => {
-  const { profile, loading } = useAuth();
+export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+  const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
     return (
@@ -19,17 +18,8 @@ export const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) 
     );
   }
 
-  if (!profile) {
-    return <Navigate to="/login?role=teacher" replace />;
-  }
-
-  if (requiredRole === 'teacher') {
-    if (profile.role !== 'admin' && profile.role !== 'teacher') {
-      return <Navigate to="/student-corner" replace />;
-    }
-  } else if (profile.role !== requiredRole) {
-    const redirect = (profile.role === 'admin' || profile.role === 'teacher') ? '/teachers-corner' : '/student-corner';
-    return <Navigate to={redirect} replace />;
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
   }
 
   return <>{children}</>;

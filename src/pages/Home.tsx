@@ -77,8 +77,7 @@ export const Home = () => {
         }));
         setRecentResults(formattedResults);
       }
-    } catch (error) {
-      console.error('Error loading leaderboard:', error);
+    } catch {
     }
   };
 

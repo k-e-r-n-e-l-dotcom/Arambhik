@@ -38,10 +38,10 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
 
-              <Route path="/teachers-corner" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminDashboard /></ProtectedRoute></ErrorBoundary>} />
-              <Route path="/teachers-corner/students" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminStudents /></ProtectedRoute></ErrorBoundary>} />
-              <Route path="/teachers-corner/teachers" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminTeachers /></ProtectedRoute></ErrorBoundary>} />
-              <Route path="/teachers-corner/resources" element={<ErrorBoundary><ProtectedRoute requiredRole="teacher"><AdminResources /></ProtectedRoute></ErrorBoundary>} />
+              <Route path="/teachers-corner" element={<ErrorBoundary><ProtectedRoute><AdminDashboard /></ProtectedRoute></ErrorBoundary>} />
+              <Route path="/teachers-corner/students" element={<ErrorBoundary><ProtectedRoute><AdminStudents /></ProtectedRoute></ErrorBoundary>} />
+              <Route path="/teachers-corner/teachers" element={<ErrorBoundary><ProtectedRoute><AdminTeachers /></ProtectedRoute></ErrorBoundary>} />
+              <Route path="/teachers-corner/resources" element={<ErrorBoundary><ProtectedRoute><AdminResources /></ProtectedRoute></ErrorBoundary>} />
 
               <Route path="/student-corner" element={<ErrorBoundary><StudentDashboard /></ErrorBoundary>} />
             </Routes>

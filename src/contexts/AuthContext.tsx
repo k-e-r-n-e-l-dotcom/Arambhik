@@ -1,104 +1,47 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { supabase } from '../lib/supabase';
-import type { Session, User as SupabaseUser } from '@supabase/supabase-js';
-
-export interface Profile {
-  id: string;
-  full_name: string;
-  role: 'admin' | 'teacher' | 'student';
-  username: string;
-  email: string | null;
-  phone: string | null;
-  class: string | null;
-  father_mobile: string | null;
-  mother_mobile: string | null;
-  student_mobile: string | null;
-  teacher_subject: string | null;
-  address: string | null;
-  attendance_percentage: number | null;
-  marks: number | null;
-  created_at: string;
-  updated_at: string;
-}
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
-  session: Session | null;
-  user: SupabaseUser | null;
-  profile: Profile | null;
+  isAuthenticated: boolean;
+  isAdmin: boolean;
   loading: boolean;
-  signIn: (username: string, password: string) => Promise<void>;
-  signOut: () => Promise<void>;
+  signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<SupabaseUser | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
-
-    console.log('PROFILE FETCH:', data);
-    console.log('PROFILE ERROR:', error);
-
-    setProfile(data);
-  };
-
   useEffect(() => {
-    const init = async () => {
-      const { data: { session: currentSession } } = await supabase.auth.getSession();
-      setSession(currentSession);
-      setUser(currentSession?.user ?? null);
-      if (currentSession?.user) {
-        await fetchProfile(currentSession.user.id);
-      }
-      setLoading(false);
-    };
-
-    init();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
-      setSession(newSession);
-      setUser(newSession?.user ?? null);
-      if (newSession?.user) {
-        (async () => {
-          await fetchProfile(newSession.user.id);
-        })();
-      } else {
-        setProfile(null);
-      }
-    });
-
-    return () => subscription.unsubscribe();
+    const storedAuth = localStorage.getItem('admin_auth');
+    if (storedAuth === 'true') {
+      setIsAuthenticated(true);
+      setIsAdmin(true);
+    }
+    setLoading(false);
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    console.log('Attempting login with email:', email);
-
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
-
-    console.log('LOGIN RESPONSE:', data);
-    console.log('LOGIN ERROR:', error);
-
-    if (error) throw error;
+    if (email === 'admin@arambhik.com' && password === 'Admin@12345') {
+      setIsAuthenticated(true);
+      setIsAdmin(true);
+      localStorage.setItem('admin_auth', 'true');
+    } else {
+      throw new Error('Invalid credentials');
+    }
   };
-  const signOut = async () => {
-    await supabase.auth.signOut();
-    setProfile(null);
+
+  const signOut = () => {
+    setIsAuthenticated(false);
+    setIsAdmin(false);
+    localStorage.removeItem('admin_auth');
   };
 
   return (
-    <AuthContext.Provider value={{ session, user, profile, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ isAuthenticated, isAdmin, loading, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );

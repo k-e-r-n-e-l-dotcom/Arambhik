@@ -1,10 +1,33 @@
 import { useState, useEffect } from 'react';
 import { AdminLayout } from '../../components/AdminLayout';
-import { supabase, Class, Subject, Chapter } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase';
 import { BookOpen, Plus, Edit, Trash2, Save, X, Loader2, FileText, Link as LinkIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const empty = { title: '', ncert_link: '', notes: '' };
+interface Class {
+  id: string;
+  name: string;
+  display_order: number;
+}
+
+interface Subject {
+  id: string;
+  class_id: string;
+  name: string;
+  display_order: number;
+}
+
+interface Chapter {
+  id: string;
+  subject_id: string;
+  title: string;
+  ncert_link: string;
+  notes: string;
+  mindmap: string;
+  display_order: number;
+}
+
+const empty = { title: '', ncert_link: '', notes: '', mindmap: '' };
 
 export const AdminResources = () => {
   const [classes, setClasses] = useState<Class[]>([]);
@@ -51,7 +74,12 @@ export const AdminResources = () => {
 
   const openAdd = () => { setForm(empty); setEditing(null); setAdding(true); };
   const openEdit = (ch: Chapter) => {
-    setForm({ title: ch.title, ncert_link: ch.ncert_link || '', notes: ch.notes || '' });
+    setForm({
+      title: ch.title,
+      ncert_link: ch.ncert_link || '',
+      notes: ch.notes || '',
+      mindmap: ch.mindmap || ''
+    });
     setEditing(ch);
     setAdding(true);
   };
@@ -62,12 +90,19 @@ export const AdminResources = () => {
     setSaving(true);
     if (editing) {
       await supabase.from('chapters').update({
-        title: form.title, ncert_link: form.ncert_link, notes: form.notes,
+        title: form.title,
+        ncert_link: form.ncert_link,
+        notes: form.notes,
+        mindmap: form.mindmap
       }).eq('id', editing.id);
     } else {
       await supabase.from('chapters').insert({
-        subject_id: selSubject, title: form.title, ncert_link: form.ncert_link,
-        notes: form.notes, display_order: chapters.length + 1,
+        subject_id: selSubject,
+        title: form.title,
+        ncert_link: form.ncert_link,
+        notes: form.notes,
+        mindmap: form.mindmap,
+        display_order: chapters.length + 1
       });
     }
     const { data } = await supabase.from('chapters').select('*')
@@ -99,7 +134,7 @@ export const AdminResources = () => {
     <AdminLayout>
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-          <BookOpen className="h-7 w-7 text-blue-600" /> Resources
+          <BookOpen className="h-7 w-7 text-blue-600" /> Study Materials
         </h1>
         <p className="text-sm text-slate-500 mt-1">Manage classes, subjects, and chapters</p>
       </div>
@@ -128,11 +163,10 @@ export const AdminResources = () => {
               )}
               {subjects.map((s) => (
                 <button key={s.id} onClick={() => setSelSubject(s.id)}
-                  className={`w-full text-left px-3 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+                  className={`w-full text-left px-3 py-2 rounded-xl text-sm font-medium transition-all ${
                     selSubject === s.id ? 'bg-blue-50 text-blue-700' : 'text-slate-600 hover:bg-slate-50'
                   }`}>
-                  <span>{s.icon}</span>
-                  <span className="truncate">{s.name}</span>
+                  {s.name}
                 </button>
               ))}
             </div>
@@ -168,13 +202,15 @@ export const AdminResources = () => {
                         <p className="text-sm font-medium text-slate-800 truncate">{ch.title}</p>
                         <div className="flex items-center gap-3 mt-0.5">
                           {ch.ncert_link && (
-                            <a href={ch.ncert_link} target="_blank" rel="noreferrer"
-                              className="text-xs text-blue-500 hover:text-blue-700 flex items-center gap-1">
+                            <span className="text-xs text-blue-500 flex items-center gap-1">
                               <LinkIcon className="h-3 w-3" /> NCERT
-                            </a>
+                            </span>
                           )}
                           {ch.notes && <span className="text-xs text-slate-400 flex items-center gap-1">
                             <FileText className="h-3 w-3" /> Notes
+                          </span>}
+                          {ch.mindmap && <span className="text-xs text-slate-400 flex items-center gap-1">
+                            <FileText className="h-3 w-3" /> Mindmap
                           </span>}
                         </div>
                       </div>
@@ -230,11 +266,18 @@ export const AdminResources = () => {
                     placeholder="https://ncert.nic.in/..." />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Notes</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Notes (300+ words)</label>
                   <textarea value={form.notes} rows={5}
                     onChange={(e) => setForm({ ...form, notes: e.target.value })}
                     className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                     placeholder="Study notes for this chapter..." />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Mind Map</label>
+                  <textarea value={form.mindmap} rows={4}
+                    onChange={(e) => setForm({ ...form, mindmap: e.target.value })}
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    placeholder="Mind map content for this chapter..." />
                 </div>
               </div>
               <div className="p-5 border-t border-slate-100 flex items-center gap-3 justify-end">

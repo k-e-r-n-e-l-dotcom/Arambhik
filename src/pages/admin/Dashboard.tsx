@@ -57,9 +57,6 @@ export const AdminDashboard = () => {
         supabase.from('leaderboard').select('*, profiles(*)').order('rank', { ascending: true }),
       ]);
 
-      if (studentsRes.error) console.error('Error loading students:', studentsRes.error);
-      if (materialsRes.error) console.error('Error loading materials:', materialsRes.error);
-      if (leaderboardRes.error) console.error('Error loading leaderboard:', leaderboardRes.error);
 
       setStudents(studentsRes.data ?? []);
       setMaterials(materialsRes.data ?? []);
@@ -69,8 +66,7 @@ export const AdminDashboard = () => {
         materials: materialsRes.data?.length ?? 0,
         leaderboardEntries: leaderboardRes.data?.length ?? 0,
       });
-    } catch (error) {
-      console.error('Error loading data:', error);
+    } catch {
       setStudents([]);
       setMaterials([]);
       setLeaderboard([]);
@@ -98,8 +94,7 @@ export const AdminDashboard = () => {
       if (error) throw error;
       await loadData();
       setEditingStudent(null);
-    } catch (error) {
-      console.error('Error updating student:', error);
+    } catch {
       alert('Failed to update student');
     }
   };
@@ -110,8 +105,7 @@ export const AdminDashboard = () => {
       const { error } = await supabase.from('profiles').delete().eq('id', id);
       if (error) throw error;
       await loadData();
-    } catch (error) {
-      console.error('Error deleting student:', error);
+    } catch {
       alert('Failed to delete student');
     }
   };
@@ -137,8 +131,7 @@ export const AdminDashboard = () => {
       await loadData();
       setShowAddMaterial(false);
       setNewMaterial({ type: 'book' });
-    } catch (error) {
-      console.error('Error adding material:', error);
+    } catch {
       alert('Failed to add material');
     } finally {
       setUploading(false);
@@ -151,8 +144,7 @@ export const AdminDashboard = () => {
       const { error } = await supabase.from('materials').delete().eq('id', id);
       if (error) throw error;
       await loadData();
-    } catch (error) {
-      console.error('Error deleting material:', error);
+    } catch {
       alert('Failed to delete material');
     }
   };
@@ -168,8 +160,7 @@ export const AdminDashboard = () => {
 
       await recalculateRanks();
       await loadData();
-    } catch (error) {
-      console.error('Error updating leaderboard:', error);
+    } catch {
       alert('Failed to update leaderboard');
     }
   };
@@ -182,8 +173,7 @@ export const AdminDashboard = () => {
       for (let i = 0; i < data.length; i++) {
         await supabase.from('leaderboard').update({ rank: i + 1 }).eq('id', data[i].id);
       }
-    } catch (error) {
-      console.error('Error recalculating ranks:', error);
+    } catch {
     }
   };
 

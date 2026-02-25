@@ -4,30 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { LogIn, Loader2, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 
-const API_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/manage-users`;
-
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { profile, signIn, loading } = useAuth();
+  const { isAuthenticated, signIn, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'bootstrap' }),
-    }).catch(() => {});
-  }, []);
-
-  useEffect(() => {
-    if (!loading && profile) {
-      navigate((profile.role === 'admin' || profile.role === 'teacher') ? '/teachers-corner' : '/student-corner');
+    if (!loading && isAuthenticated) {
+      navigate('/teachers-corner');
     }
-  }, [profile, loading, navigate]);
+  }, [isAuthenticated, loading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,8 +25,7 @@ export const Login = () => {
     setIsLoading(true);
     try {
       await signIn(email, password);
-    } catch (err) {
-      console.error('Login error:', err);
+    } catch {
       setError('Invalid email or password');
     } finally {
       setIsLoading(false);
