@@ -245,15 +245,14 @@ export const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          <div className="max-w-4xl mx-auto mb-16">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-2"
             >
-              <div className="bg-gradient-to-br from-slate-50 to-primary-50/30 rounded-3xl p-8 h-full border border-slate-200">
+              <div className="bg-gradient-to-br from-slate-50 to-primary-50/30 rounded-3xl p-8 border border-slate-200">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-2xl font-bold text-primary-800 flex items-center gap-2">
                     <Quote className="h-6 w-6 text-accent-600" />
@@ -297,55 +296,6 @@ export const Home = () => {
                     </div>
                   </motion.div>
                 </AnimatePresence>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-1"
-            >
-              <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-3xl p-8 h-full text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-accent-500/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent-500/20 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Trophy className="h-6 w-6 text-accent-200" />
-                    <h3 className="text-xl font-bold">Latest Board Result</h3>
-                  </div>
-
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentResult}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.4 }}
-                      className="space-y-4"
-                    >
-                      <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
-                        <div className="text-5xl font-bold mb-2">{recentResults[currentResult].score}</div>
-                        <div className="text-lg font-semibold mb-1">{recentResults[currentResult].name}</div>
-                        <div className="text-sm opacity-90">{recentResults[currentResult].class} • {recentResults[currentResult].subject}</div>
-                      </div>
-
-                      <div className="text-center text-sm opacity-75">
-                        Board Exams {recentResults[currentResult].year}
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-
-                  <Link
-                    to="/contact"
-                    className="mt-6 flex items-center justify-center gap-2 bg-white text-primary-700 px-6 py-3 rounded-full font-semibold hover:shadow-soft hover:scale-105 transition-all"
-                  >
-                    <span>Join Now</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
               </div>
             </motion.div>
           </div>
