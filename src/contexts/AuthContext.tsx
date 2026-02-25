@@ -39,11 +39,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const fetchProfile = async (userId: string) => {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
-      .maybeSingle();
+      .single();
+
+    console.log('PROFILE FETCH:', data);
+    console.log('PROFILE ERROR:', error);
+
     setProfile(data);
   };
 
@@ -75,13 +79,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
- const signIn = async (email: string, password: string) => {
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
-  if (error) throw error;
-};
+  const signIn = async (email: string, password: string) => {
+    console.log('Attempting login with email:', email);
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    console.log('LOGIN RESPONSE:', data);
+    console.log('LOGIN ERROR:', error);
+
+    if (error) throw error;
+  };
   const signOut = async () => {
     await supabase.auth.signOut();
     setProfile(null);

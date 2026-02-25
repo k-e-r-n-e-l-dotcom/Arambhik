@@ -7,7 +7,7 @@ import { LogIn, Loader2, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 const API_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/manage-users`;
 
 export const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -34,9 +34,10 @@ export const Login = () => {
     setError('');
     setIsLoading(true);
     try {
-      await signIn(username, password);
-    } catch {
-      setError('Invalid username or password');
+      await signIn(email, password);
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Invalid email or password');
     } finally {
       setIsLoading(false);
     }
@@ -92,15 +93,15 @@ export const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-2">
-                Username
+                Email
               </label>
               <input
-                type="text"
+                type="email"
                 required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 focus:bg-white outline-none transition-all text-sm"
-                placeholder="Enter username"
+                placeholder="Enter email address"
               />
             </div>
 
@@ -142,14 +143,6 @@ export const Login = () => {
               )}
             </button>
           </form>
-
-          <div className="mt-6 p-4 bg-slate-50 rounded-xl border border-slate-100">
-            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Default Credentials</p>
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-slate-500">Teacher</span>
-              <span className="font-mono font-semibold text-slate-800">teacher / password</span>
-            </div>
-          </div>
         </div>
       </motion.div>
     </div>
