@@ -17,20 +17,20 @@ export const Home = () => {
       rating: 5
     },
     {
-      name: "Mrs. Radhika Bandoliya",
+      name: "Mrs.  Bandoliya",
       role: "Parent of Class 5th & 7th Student",
       quote: "Big thanks to the teachers their dedication towards teaching is truly helping. I can see a great improvement in my childerns. KEEP UP THE GREAT WORK. ",
       rating: 5
     },
     {
-      name: "Ankit Verma",
-      role: "Class 11 Science",
-      quote: "The faculty here doesn't just teach subjects, they build confidence. I'm no longer afraid of Math and Physics thanks to their patient teaching.",
+      name: "Mrs. Sundriyal",
+      role: "Parent of Class 9th student",
+      quote: "The faculty here doesn't just teach subjects, they build confidence. My child is no longer afraid of sciense, thanks for support provided by faculty.",
       rating: 5
     },
     {
       name: "Mrs. Panchal",
-      role: "Parent of Class 9 Student",
+      role: "Parent of Class 9th Student",
       quote: "Best decision we made! Our son now completes homework on time and actually enjoys studying. The teachers are incredibly supportive.",
       rating: 5
     }
