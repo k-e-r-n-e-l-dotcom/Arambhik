@@ -11,9 +11,9 @@ export const Home = () => {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
-      role: "Class 12 CBSE - 96.2%",
-      quote: "Arambhik Academy transformed my approach to studying. The teachers focus on concept clarity. I scored 96.2% in boards!",
+      name: "Vaibhav Purohit",
+      role: "Class 9th CBSE - 96%",
+      quote: "Arambhik Academy transformed my approach to studying. The teachers focus on concept clarity. I scored 96% !",
       rating: 5
     },
     {
