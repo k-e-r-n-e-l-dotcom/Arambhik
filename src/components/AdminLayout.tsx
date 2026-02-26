@@ -1,9 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import {
-  LayoutDashboard,
   Users,
-  GraduationCap,
   BookOpen,
   LogOut,
   Menu,
@@ -14,9 +12,7 @@ import { useState, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-  { to: '/teachers-corner', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/teachers-corner/students', label: 'Students', icon: Users },
-  { to: '/teachers-corner/teachers', label: 'Teachers', icon: GraduationCap },
+  { to: '/teachers-corner', label: 'Attendance', icon: Users },
   { to: '/teachers-corner/resources', label: 'Study Materials', icon: BookOpen },
 ];
 
