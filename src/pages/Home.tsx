@@ -13,7 +13,7 @@ export const Home = () => {
     {
       name: "Priya Sharma",
       role: "Class 12 CBSE - 96.2%",
-      quote: "Arambhik Academy transformed my approach to studying. The teachers focus on concept clarity rather than rote learning. I scored 96.2% in boards!",
+      quote: "Arambhik Academy transformed my approach to studying. The teachers focus on concept clarity. I scored 96.2% in boards!",
       rating: 5
     },
     {
