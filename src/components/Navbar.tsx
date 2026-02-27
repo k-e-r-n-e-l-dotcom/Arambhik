@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X, ShieldCheck, BookOpen } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -47,6 +47,14 @@ export const Navbar = () => {
               ))}
 
               <Link
+                to="/student-corner"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 text-sm whitespace-nowrap"
+              >
+                <BookOpen size={18} className="text-white/90" />
+                <span>Student Corner</span>
+              </Link>
+
+              <Link
                 to="/login"
                 className="flex items-center gap-1.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-accent-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-500/40 transition-all duration-300 text-sm whitespace-nowrap"
               >
@@ -87,6 +95,14 @@ export const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
+                <Link
+                  to="/student-corner"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <BookOpen size={20} />
+                  <span>Student Corner</span>
+                </Link>
                 <Link
                   to="/login"
                   className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
