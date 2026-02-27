@@ -12,8 +12,6 @@ import { Centers } from './pages/Centers';
 import { Contact } from './pages/Contact';
 import { Login } from './pages/Login';
 import StudentCorner from './pages/StudentCorner';
-import TeachersCorner from './pages/TeachersCorner';
-import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -32,14 +30,6 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/student-corner" element={<StudentCorner />} />
-              <Route
-                path="/teachers-corner"
-                element={
-                  <ProtectedRoute>
-                    <TeachersCorner />
-                  </ProtectedRoute>
-                }
-              />
             </Routes>
           </main>
           <Footer />
