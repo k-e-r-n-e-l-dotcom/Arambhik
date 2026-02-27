@@ -1,27 +1,17 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { LogOut, Menu, X, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Menu, X, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = () => {
-  const { isAuthenticated, signOut } = useAuth();
-  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const handleLogout = () => {
-    signOut();
-    navigate('/');
-    setMobileMenuOpen(false);
-  };
 
   const publicLinks = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About Us' },
     { to: '/courses', label: 'Courses' },
     { to: '/centers', label: 'Centers' },
-    { to: '/contact', label: 'Contact' },
-    { to: '/student-corner', label: 'Student Corner' }
+    { to: '/contact', label: 'Contact' }
   ];
 
   return (
@@ -45,45 +35,24 @@ export const Navbar = () => {
             </Link>
 
             <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
-              {!isAuthenticated ? (
-                <>
-                  {publicLinks.map(link => (
-                    <Link
-                      key={link.to}
-                      to={link.to}
-                      className="text-sm font-semibold text-slate-600 hover:text-primary-700 transition-colors relative group whitespace-nowrap"
-                    >
-                      {link.label}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 group-hover:w-full transition-all duration-300"></span>
-                    </Link>
-                  ))}
+              {publicLinks.map(link => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-sm font-semibold text-slate-600 hover:text-primary-700 transition-colors relative group whitespace-nowrap"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              ))}
 
-                  <Link
-                    to="/login"
-                    className="flex items-center gap-1.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-accent-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-500/40 transition-all duration-300 text-sm whitespace-nowrap"
-                  >
-                    <ShieldCheck size={18} className="text-white/90" />
-                    <span>Teachers Corner</span>
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link
-                    to="/teachers-corner"
-                    className="text-sm font-semibold text-slate-600 hover:text-primary-700 transition-colors relative group whitespace-nowrap"
-                  >
-                    Dashboard
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 group-hover:w-full transition-all duration-300"></span>
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center space-x-2 px-4 py-2 bg-red-50 text-red-700 rounded-xl hover:bg-red-100 transition-all font-medium text-sm whitespace-nowrap"
-                  >
-                    <LogOut className="h-4 w-4" />
-                    <span>Logout</span>
-                  </button>
-                </>
-              )}
+              <Link
+                to="/login"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-accent-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-500/40 transition-all duration-300 text-sm whitespace-nowrap"
+              >
+                <ShieldCheck size={18} className="text-white/90" />
+                <span>Teachers Corner</span>
+              </Link>
             </div>
 
             <button
@@ -108,45 +77,24 @@ export const Navbar = () => {
               className="md:hidden border-t border-slate-200 overflow-hidden"
             >
               <div className="px-4 md:px-6 py-4 space-y-3">
-                {!isAuthenticated ? (
-                  <>
-                    {publicLinks.map(link => (
-                      <Link
-                        key={link.to}
-                        to={link.to}
-                        className="block text-slate-700 hover:text-primary-700 transition-colors py-2 font-medium"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                    <Link
-                      to="/login"
-                      className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <ShieldCheck size={20} />
-                      <span>Teachers Corner</span>
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      to="/teachers-corner"
-                      className="block text-slate-700 hover:text-primary-700 transition-colors py-2 font-medium"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Dashboard
-                    </Link>
-                    <button
-                      onClick={handleLogout}
-                      className="flex items-center justify-center space-x-2 w-full px-4 py-2.5 bg-red-50 text-red-700 rounded-xl hover:bg-red-100 transition-colors font-semibold"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      <span>Logout</span>
-                    </button>
-                  </>
-                )}
+                {publicLinks.map(link => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="block text-slate-700 hover:text-primary-700 transition-colors py-2 font-medium"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Link
+                  to="/login"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ShieldCheck size={20} />
+                  <span>Teachers Corner</span>
+                </Link>
               </div>
             </motion.div>
           )}
