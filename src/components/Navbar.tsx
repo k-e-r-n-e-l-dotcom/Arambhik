@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Menu, X, ShieldCheck, BookOpen } from 'lucide-react';
+import { Menu, X, BookOpen } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -53,14 +53,6 @@ export const Navbar = () => {
                 <BookOpen size={18} className="text-white/90" />
                 <span>Student Corner</span>
               </Link>
-
-              <Link
-                to="/login"
-                className="flex items-center gap-1.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-accent-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-500/40 transition-all duration-300 text-sm whitespace-nowrap"
-              >
-                <ShieldCheck size={18} className="text-white/90" />
-                <span>Teachers Corner</span>
-              </Link>
             </div>
 
             <button
@@ -102,14 +94,6 @@ export const Navbar = () => {
                 >
                   <BookOpen size={20} />
                   <span>Student Corner</span>
-                </Link>
-                <Link
-                  to="/login"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <ShieldCheck size={20} />
-                  <span>Teachers Corner</span>
                 </Link>
               </div>
             </motion.div>
