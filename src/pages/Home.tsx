@@ -25,7 +25,7 @@ export const Home = () => {
     {
       name: "Mrs. Sundriyal",
       role: "Parent of Class 9th student",
-      quote: "The faculty here doesn't just teach subjects, they build confidence. My child is no longer afraid of sciense, thanks for support provided by faculty.",
+      quote: "The faculty here doesn't just teach subjects, they build confidence. My child is no longer afraid of science, thanks for support provided by faculty.",
       rating: 5
     },
     {
