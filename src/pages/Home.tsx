@@ -104,7 +104,7 @@ export const Home = () => {
                 className="inline-flex items-center space-x-2 backdrop-blur-md bg-white/10 border border-white/20 px-5 py-2.5 rounded-full shadow-soft"
               >
                 <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-white">Trusted by 500+ Students</span>
+                <span className="text-sm font-semibold text-white">Trusted by Parents</span>
               </motion.div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white text-balance font-bold">
@@ -130,7 +130,7 @@ export const Home = () => {
                 <div className="space-y-4 text-slate-300 leading-relaxed">
                   <h2 className="text-2xl text-white font-bold">Who We Are</h2>
                   <p>
-                   Arambhik Academy is a concept-driven learning institute designed for CBSE students from Class 6 to 10, where understanding comes before memorisation. We believe education should build clarity, confidence, and curiosity—not pressure.
+                   Arambhik Academy is a concept-driven learning institute designed for CBSE students from Class 1 to 10, where understanding comes before memorisation. We believe education should build clarity, confidence, and curiosity—not pressure.
                   </p>
 
                   <motion.div
@@ -143,7 +143,7 @@ export const Home = () => {
                      Our academy is equipped with a dedicated science and computer lab where students learn through experiments, demonstrations, and hands-on activities. The lab environment encourages curiosity, practical understanding, and application-based learning aligned with the CBSE curriculum.
                     </p>
                     <p>
-                      At Arambhik Academy, we don’t just prepare students for exams—we help them think scientifically, learn independently, and grow confidently. Every concept is taught with purpose, every student is guided with care, and every step of learning begins with a strong foundation.
+                  Before examinations, proper revision classes are conducted to ensure thorough revision and clarity of concepts. This is followed by CBSE-based, syllabus-oriented mock tests conducted within a complete exam-like time limit, helping students improve speed, accuracy, and confidence while preventing exam-time panic. Mock tests begin 10–15 days prior to the examinations to prepare students effectively.For Board Classes , mock tests begin one month before the final examination to ensure effective preparation.
                     </p>
                   </motion.div>
 
@@ -220,7 +220,7 @@ export const Home = () => {
                 className="absolute top-8 -right-4 backdrop-blur-md bg-gradient-to-br from-accent-500 to-accent-600 text-white px-8 py-4 rounded-3xl shadow-brand border border-white/20"
               >
                 <div className="text-sm font-semibold">Classes</div>
-                <div className="text-4xl font-bold">6-12</div>
+                <div className="text-4xl font-bold">1-10</div>
               </motion.div>
             </motion.div>
           </div>
@@ -331,7 +331,7 @@ export const Home = () => {
               {
                 icon: Microscope,
                 title: 'Dedicated Science & Computer Labs',
-                description: 'State-of-the-art laboratory facilities for science experiments and computer practice sessions',
+                description: 'An integrated science laboratory fully equipped with modern equipment to nurture and support students’ curiosity.',
                 gradient: 'from-accent-500/10 to-accent-600/5',
                 iconColor: 'text-accent-600'
               }
@@ -377,9 +377,9 @@ export const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { value: '500+', label: 'Students Enrolled', delay: 0 },
-              { value: '95%', label: 'Success Rate', delay: 0.1 },
-              { value: '15+', label: 'Years of Excellence', delay: 0.2 }
+              { value: '10-15', label: 'Small Batches of Students', delay: 0 },
+              { value: '95%', label: 'Improvement Rate', delay: 0.1 },
+              { value: '10+', label: 'Years of Excellence', delay: 0.2 }
             ].map((stat, index) => (
               <motion.div
                 key={index}
