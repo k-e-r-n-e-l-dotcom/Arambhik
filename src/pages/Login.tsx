@@ -51,7 +51,7 @@ export const Login = () => {
           <div className="flex items-center justify-center mb-8">
             <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-slate-50 shadow-xl p-2">
               <img
-                src="/logo.png"
+                src="/updated_Icon.jpeg"
                 alt="Arambhik Academy Logo"
                 className="w-full h-full object-contain"
               />

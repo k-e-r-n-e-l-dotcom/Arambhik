@@ -26,7 +26,7 @@ export const Navbar = () => {
             <Link to="/" className="flex items-center space-x-2 md:space-x-3 group flex-shrink-0">
               <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden group-hover:scale-110 transition-transform duration-300 bg-white shadow-sm">
                 <img
-                  src="/logo.png"
+                  src="/updated_Icon.jpeg"
                   alt="Arambhik Academy Logo"
                   className="w-full h-full object-contain p-0.5"
                 />
