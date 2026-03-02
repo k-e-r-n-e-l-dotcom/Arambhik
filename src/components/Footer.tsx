@@ -10,7 +10,7 @@ export const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-white shadow-md p-1">
                 <img
-                  src="/logo.png"
+                  src="/updated_Icon.jpeg"
                   alt="Arambhik Academy Logo"
                   className="w-full h-full object-contain"
                 />
