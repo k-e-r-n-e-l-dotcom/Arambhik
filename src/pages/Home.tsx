@@ -201,7 +201,7 @@ export const Home = () => {
                 className="relative w-full max-w-[500px] aspect-square"
               >
                 <img
-                  src="/kanyadan.webp"
+                  src="/image.png"
                   alt="Teacher instructing students in classroom"
                   className="w-full h-full object-cover rounded-3xl shadow-2xl border-4 border-white/10"
                 />
