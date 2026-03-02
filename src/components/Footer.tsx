@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-primary-800 to-primary-900 text-white mt-auto">
+    <footer className="bg-gradient-to-br from-[#1F2937] to-[#2B3445] text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
@@ -27,16 +27,16 @@ export const Footer = () => {
           <div>
             <h4 className="text-lg font-bold font-montserrat mb-4">Quick Links</h4>
             <div className="space-y-3">
-              <Link to="/about" className="block text-slate-300 hover:text-accent-300 transition-colors">
+              <Link to="/about" className="block text-slate-300 hover:text-primary-400 transition-colors">
                 About Us
               </Link>
-              <Link to="/courses" className="block text-slate-300 hover:text-accent-300 transition-colors">
+              <Link to="/courses" className="block text-slate-300 hover:text-primary-400 transition-colors">
                 Our Courses
               </Link>
-              <Link to="/centers" className="block text-slate-300 hover:text-accent-300 transition-colors">
+              <Link to="/centers" className="block text-slate-300 hover:text-primary-400 transition-colors">
                 Our Centers
               </Link>
-              <Link to="/contact" className="block text-slate-300 hover:text-accent-300 transition-colors">
+              <Link to="/contact" className="block text-slate-300 hover:text-primary-400 transition-colors">
                 Contact
               </Link>
             </div>
@@ -46,26 +46,26 @@ export const Footer = () => {
             <h4 className="text-lg font-bold font-montserrat mb-4">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-accent-300 mt-1 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-primary-400 mt-1 flex-shrink-0" />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=House+No.2+Lane+No.+5+Nakronda+Road+Sainik+Colony+Dehradun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-300 text-sm hover:text-accent-300 transition-colors underline decoration-dotted underline-offset-2"
+                  className="text-slate-300 text-sm hover:text-primary-400 transition-colors underline decoration-dotted underline-offset-2"
                 >
                   House No.2 Lane No. 5, Nakronda Road,<br />
                   Sainik Colony, Dehradun, Uttarakhand 248001
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-accent-300 flex-shrink-0" />
-                <a href="tel:+919557875108" className="text-slate-300 text-sm hover:text-accent-300 transition-colors">
+                <Phone className="h-5 w-5 text-primary-400 flex-shrink-0" />
+                <a href="tel:+919557875108" className="text-slate-300 text-sm hover:text-primary-400 transition-colors">
                   +91 9557875108
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-accent-300 flex-shrink-0" />
-                <a href="mailto:info@arambhikacademy.com" className="text-slate-300 text-sm hover:text-accent-300 transition-colors">
+                <Mail className="h-5 w-5 text-primary-400 flex-shrink-0" />
+                <a href="mailto:info@arambhikacademy.com" className="text-slate-300 text-sm hover:text-primary-400 transition-colors">
                   support@arambhikacademy.com
                 </a>
               </div>

@@ -83,10 +83,10 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative min-h-screen flex items-center px-4 pt-32 pb-20 bg-gradient-to-br from-primary-900 via-primary-800 to-slate-900">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/30 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <section className="relative min-h-screen flex items-center px-4 pt-32 pb-20 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937]">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/40 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -110,7 +110,7 @@ export const Home = () => {
               <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white text-balance font-bold">
                 From Basics to{' '}
                 <span className="relative inline-block">
-                  <span className="relative z-10 bg-gradient-to-r from-accent-200 via-accent-300 to-accent-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(0,163,204,0.5)]" style={{ WebkitTextStroke: '0.5px rgba(0,163,204,0.3)' }}>
+                  <span className="relative z-10 bg-gradient-to-r from-[#F4B400] via-[#F78747] to-[#F37021] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(243,112,33,0.5)]" style={{ WebkitTextStroke: '0.5px rgba(243,112,33,0.3)' }}>
                     Brilliance
                   </span>
                   <motion.div
@@ -149,7 +149,7 @@ export const Home = () => {
 
                   <button
                     onClick={() => setReadMore(!readMore)}
-                    className="inline-flex items-center space-x-2 text-accent-300 hover:text-accent-200 font-semibold group"
+                    className="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 font-semibold group"
                   >
                     <span>{readMore ? 'Read Less' : 'Read More'}</span>
                     <ChevronDown className={`h-4 w-4 transition-transform ${readMore ? 'rotate-180' : ''}`} />
@@ -160,7 +160,7 @@ export const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link
                   to="/courses"
-                  className="group px-8 py-4 bg-gradient-to-r from-accent-500 to-accent-600 text-white rounded-full hover:shadow-brand hover:-translate-y-1 hover:shadow-xl transition-all font-semibold inline-flex items-center justify-center space-x-2"
+                  className="group px-8 py-4 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white rounded-full shadow-lg hover:shadow-2xl hover:shadow-accent-500/30 hover:-translate-y-1 transition-all duration-300 font-semibold inline-flex items-center justify-center space-x-2"
                 >
                   <span>Explore Courses</span>
                   <svg className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -169,7 +169,7 @@ export const Home = () => {
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-8 py-4 backdrop-blur-md bg-white/10 border border-white/20 text-white rounded-full hover:shadow-soft hover:-translate-y-1 transition-all font-semibold inline-flex items-center justify-center"
+                  className="px-8 py-4 backdrop-blur-md bg-white/10 border border-white/20 text-white rounded-full hover:shadow-soft hover:-translate-y-1 transition-all duration-300 font-semibold inline-flex items-center justify-center"
                 >
                   Contact Us
                 </Link>
@@ -217,7 +217,7 @@ export const Home = () => {
                   rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                   opacity: { delay: 0.8, duration: 0.6 }
                 }}
-                className="absolute top-8 -right-4 backdrop-blur-md bg-gradient-to-br from-accent-500 to-accent-600 text-white px-8 py-4 rounded-3xl shadow-brand border border-white/20"
+                className="absolute top-8 -right-4 backdrop-blur-md bg-gradient-to-br from-[#F37021] to-[#C45512] text-white px-8 py-4 rounded-3xl shadow-lg shadow-accent-500/30 border border-white/20"
               >
                 <div className="text-sm font-semibold">Classes</div>
                 <div className="text-4xl font-bold">1-10</div>
@@ -236,7 +236,7 @@ export const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-800 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-4">
               Success Stories & Results
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -251,9 +251,9 @@ export const Home = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-gradient-to-br from-slate-50 to-primary-50/30 rounded-3xl p-8 border border-slate-200">
+              <div className="bg-gradient-to-br from-slate-50 to-primary-50/30 rounded-3xl p-8 border border-slate-200 shadow-lg">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-bold text-primary-800 flex items-center gap-2">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent flex items-center gap-2">
                     <Quote className="h-6 w-6 text-accent-600" />
                     Student & Parent Reviews
                   </h3>
@@ -290,7 +290,7 @@ export const Home = () => {
                       </p>
                     </div>
                     <div className="pt-4 border-t border-slate-200">
-                      <p className="font-bold text-primary-800">{testimonials[currentTestimonial].name}</p>
+                      <p className="font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent">{testimonials[currentTestimonial].name}</p>
                       <p className="text-sm text-slate-600">{testimonials[currentTestimonial].role}</p>
                     </div>
                   </motion.div>
@@ -311,7 +311,7 @@ export const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-800 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-4">
               Why Choose Arambhik Academy?
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -319,7 +319,7 @@ export const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
                 icon: BookOpen,
@@ -331,7 +331,7 @@ export const Home = () => {
               {
                 icon: Microscope,
                 title: 'Dedicated Science & Computer Labs',
-                description: 'An integrated science laboratory fully equipped with modern equipment to nurture and support students’ curiosity.',
+                description: 'An integrated science laboratory fully equipped with modern equipment to nurture and support students\' curiosity.',
                 gradient: 'from-accent-500/10 to-accent-600/5',
                 iconColor: 'text-accent-600'
               }
@@ -344,13 +344,13 @@ export const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className={`group backdrop-blur-md bg-gradient-to-br ${item.gradient} border border-white/40 p-8 rounded-3xl hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-500`}
+                  className={`group backdrop-blur-md bg-gradient-to-br ${item.gradient} border border-white/40 p-10 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500`}
                 >
-                  <Icon className={`h-12 w-12 ${item.iconColor} mb-4 group-hover:scale-110 transition-transform duration-500`} />
-                  <h3 className="text-2xl font-bold text-primary-800 mb-3">
+                  <Icon className={`h-14 w-14 ${item.iconColor} mb-6 group-hover:scale-110 transition-transform duration-500`} />
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">{item.description}</p>
+                  <p className="text-slate-600 leading-relaxed text-lg">{item.description}</p>
                 </motion.div>
               );
             })}
@@ -358,10 +358,10 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-gradient-to-br from-primary-800 via-primary-900 to-slate-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      <section className="py-24 px-4 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-accent-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -387,9 +387,9 @@ export const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: stat.delay, duration: 0.6 }}
-                className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-all"
+                className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-12 hover:bg-white/10 transition-all shadow-lg"
               >
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-accent-200 to-accent-400 bg-clip-text text-transparent mb-4">
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-4">
                   {stat.value}
                 </div>
                 <div className="text-xl text-slate-300">{stat.label}</div>

@@ -47,10 +47,10 @@ export const Contact = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative py-32 px-4 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      <section className="relative py-32 px-4 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -82,7 +82,7 @@ export const Contact = () => {
               className="group backdrop-blur-md bg-white/70 border border-white/40 p-8 rounded-3xl hover:shadow-soft-lg hover:-translate-y-1 transition-all"
             >
               <MapPin className="h-12 w-12 text-accent-600 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl text-primary-900 mb-3">Visit Us</h3>
+              <h3 className="text-xl text-gray-900 mb-3">Visit Us</h3>
               <p className="text-slate-600 leading-relaxed">
                 House No.2 Lane No. 5, Nakronda Road,<br />
                 Sainik Colony, Dehradun,<br />
@@ -103,7 +103,7 @@ export const Contact = () => {
               className="group backdrop-blur-md bg-white/70 border border-white/40 p-8 rounded-3xl hover:shadow-soft-lg hover:-translate-y-1 transition-all"
             >
               <Phone className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl text-primary-900 mb-3">Call Us</h3>
+              <h3 className="text-xl text-gray-900 mb-3">Call Us</h3>
               <p className="text-slate-600 leading-relaxed">
                 +91 9557875108<br />
                 Tuesday - Sunday : 3:00 PM - 8:00 PM<br />
@@ -123,7 +123,7 @@ export const Contact = () => {
               className="group backdrop-blur-md bg-white/70 border border-white/40 p-8 rounded-3xl hover:shadow-soft-lg hover:-translate-y-1 transition-all"
             >
               <Mail className="h-12 w-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl text-primary-900 mb-3">Email Us</h3>
+              <h3 className="text-xl text-gray-900 mb-3">Email Us</h3>
               <p className="text-slate-600 leading-relaxed">
                 support@arambhikacademy.com<br />
                 Quick response within 24 hours
@@ -141,10 +141,10 @@ export const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl text-primary-900 mb-8">Send us a Message</h2>
+              <h2 className="text-4xl text-gray-900 mb-8">Send us a Message</h2>
               <form onSubmit={handleSubmit} className="backdrop-blur-md bg-white/70 border border-white/40 p-8 rounded-3xl shadow-soft space-y-6">
                 <div>
-                  <label className="block text-primary-900 font-semibold mb-2">
+                  <label className="block text-gray-900 font-semibold mb-2">
                     Full Name
                   </label>
                   <input
@@ -158,7 +158,7 @@ export const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-primary-900 font-semibold mb-2">
+                  <label className="block text-gray-900 font-semibold mb-2">
                     Email Address
                   </label>
                   <input
@@ -172,7 +172,7 @@ export const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-primary-900 font-semibold mb-2">
+                  <label className="block text-gray-900 font-semibold mb-2">
                     Phone Number
                   </label>
                   <input
@@ -186,7 +186,7 @@ export const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-primary-900 font-semibold mb-2">
+                  <label className="block text-gray-900 font-semibold mb-2">
                     Message
                   </label>
                   <textarea
@@ -215,7 +215,7 @@ export const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl text-primary-900 mb-8">
+              <h2 className="text-4xl text-gray-900 mb-8">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-4">
@@ -228,7 +228,7 @@ export const Contact = () => {
                       onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
                       className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/50 transition-colors"
                     >
-                      <span className="font-semibold text-primary-900 pr-4">{faq.question}</span>
+                      <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
                       {openFaqIndex === index ? (
                         <ChevronUp className="h-5 w-5 text-accent-600 flex-shrink-0" />
                       ) : (
@@ -262,7 +262,7 @@ export const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl text-primary-900 mb-4">Find Us on Map</h2>
+            <h2 className="text-4xl text-gray-900 mb-4">Find Us on Map</h2>
             <p className="text-xl text-slate-600 mb-8">
               Located at Sainik Colony, Dehradun
             </p>
@@ -270,7 +270,7 @@ export const Contact = () => {
               href="https://www.google.com/maps/search/?api=1&query=House+No.2+Lane+No.+5+Nakronda+Road+Sainik+Colony+Dehradun"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-8 py-4 bg-accent-500 text-white rounded-full hover:shadow-colored-amber hover:-translate-y-1 hover:bg-accent-600 transition-all font-semibold"
+              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all font-semibold"
             >
               <Navigation className="h-5 w-5" />
               <span>Get Directions</span>
@@ -285,7 +285,7 @@ export const Contact = () => {
             className="backdrop-blur-md bg-white/70 border border-white/40 p-12 rounded-3xl shadow-soft-lg text-center"
           >
             <MapPin className="h-16 w-16 text-accent-600 mx-auto mb-6" />
-            <h3 className="text-2xl text-primary-900 mb-4">Visit Our Academy</h3>
+            <h3 className="text-2xl text-gray-900 mb-4">Visit Our Academy</h3>
             <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
               We're located in the heart of Sainik Colony, Dehradun. Click the button above to get directions via Google Maps and plan your visit.
             </p>

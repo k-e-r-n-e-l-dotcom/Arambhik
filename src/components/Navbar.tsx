@@ -42,13 +42,13 @@ export const Navbar = () => {
                   className="text-sm font-semibold text-slate-600 hover:text-primary-700 transition-colors relative group whitespace-nowrap"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#F4B400] to-[#F37021] group-hover:w-full transition-all duration-300"></span>
                 </Link>
               ))}
 
               <Link
                 to="/student-corner"
-                className="flex items-center gap-1.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 text-sm whitespace-nowrap"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white px-4 py-2 rounded-full font-semibold shadow-lg hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-sm whitespace-nowrap"
               >
                 <BookOpen size={18} className="text-white/90" />
                 <span>Student Corner</span>
@@ -89,7 +89,7 @@ export const Navbar = () => {
                 ))}
                 <Link
                   to="/student-corner"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full hover:shadow-lg transition-all font-semibold"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white rounded-full hover:shadow-lg transition-all font-semibold"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <BookOpen size={20} />

@@ -59,7 +59,7 @@ export const Login = () => {
           </div>
 
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-accent-50 text-accent-700">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-primary-50 text-accent-700">
               Teachers Corner
             </div>
             <h2 className="text-3xl font-bold text-slate-900 mb-1 font-montserrat">Welcome Back</h2>
@@ -120,7 +120,7 @@ export const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 bg-gradient-to-r from-accent-500 to-accent-600 shadow-colored-blue"
+              className="w-full py-3.5 rounded-xl font-bold text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60 disabled:hover:translate-y-0 bg-gradient-to-r from-[#F37021] to-[#C45512] shadow-lg"
             >
               {isLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />

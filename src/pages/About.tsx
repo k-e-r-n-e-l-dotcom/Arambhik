@@ -7,11 +7,11 @@ export const About = () => {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-blue-800 text-white py-16 px-4"
+        className="bg-gradient-to-br from-[#1F2937] to-[#2B3445] text-white py-20 px-4"
       >
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
-          <p className="text-xl text-blue-100">
+          <p className="text-xl text-slate-200">
             Arambhik Academy - A legacy of academic brilliance
           </p>
         </div>
@@ -22,9 +22,9 @@ export const About = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-8 rounded-lg shadow-md mb-12"
+            className="bg-white p-10 rounded-3xl shadow-lg mb-12"
           >
-            <h2 className="text-3xl font-bold text-blue-900 mb-6">Our Story</h2>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-6">Our Story</h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
               Arambhik Academy is a concept-driven learning institute designed for CBSE students from Class 6 to 10, where understanding comes before memorisation. We believe education should build clarity, confidence, and curiosity—not pressure.
             </p>
@@ -47,10 +47,10 @@ export const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-white p-8 rounded-3xl shadow-lg"
             >
-              <Target className="h-12 w-12 text-blue-800 mb-4" />
-              <h3 className="text-xl font-bold text-blue-900 mb-3">Our Mission</h3>
+              <Target className="h-12 w-12 text-accent-600 mb-4" />
+              <h3 className="text-xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-3">Our Mission</h3>
               <p className="text-gray-700">
                 To nurture independent thinkers and true leaders through concept-based learning by doing. We are committed to providing experimental education in our dedicated labs where every student—including differently abled learners—gets equal access to quality education. Our mission is to make learning meaningful, inclusive, and transformative, helping students grow into confident individuals who understand the 'why' behind every 'what'.
               </p>
@@ -61,10 +61,10 @@ export const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-white p-8 rounded-3xl shadow-lg"
             >
-              <Eye className="h-12 w-12 text-blue-800 mb-4" />
-              <h3 className="text-xl font-bold text-blue-900 mb-3">Our Vision</h3>
+              <Eye className="h-12 w-12 text-accent-600 mb-4" />
+              <h3 className="text-xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-3">Our Vision</h3>
               <p className="text-gray-700">
                 To become a trusted learning partner where every child discovers their potential through hands-on experimentation and personalized guidance. We envision a future where education is accessible to all, where dedicated lab facilities and experienced mentors work together to build not just academic excellence, but strong character, critical thinking, and lifelong curiosity in every student we teach.
               </p>
@@ -75,10 +75,10 @@ export const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-white p-8 rounded-3xl shadow-lg"
             >
-              <Heart className="h-12 w-12 text-blue-800 mb-4" />
-              <h3 className="text-xl font-bold text-blue-900 mb-3">Our Values</h3>
+              <Heart className="h-12 w-12 text-accent-600 mb-4" />
+              <h3 className="text-xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-3">Our Values</h3>
               <p className="text-gray-700">
                 Understanding over memorization. Practice over theory. Inclusion over exclusion. We believe in personal attention, honest feedback, and creating a learning environment where mistakes are stepping stones to mastery. Our commitment to small batch sizes, dedicated lab facilities, and equal opportunities for all students—including those with special needs—reflects our core belief that quality education is a right, not a privilege.
               </p>

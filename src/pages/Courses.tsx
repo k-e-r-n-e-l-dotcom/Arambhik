@@ -26,18 +26,18 @@ export const Courses = () => {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white pt-32 pb-20 px-4 overflow-hidden"
+        className="relative bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white pt-32 pb-20 px-4 overflow-hidden"
       >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-96 h-96 bg-teal-400 rounded-full blur-3xl" />
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-accent-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-20 w-96 h-96 bg-primary-500 rounded-full blur-3xl" />
         </div>
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.span
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-sm font-medium text-blue-200 mb-6 backdrop-blur-sm border border-white/10"
+            className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-sm font-medium text-primary-200 mb-6 backdrop-blur-sm border border-white/10"
           >
             Designed for real learning
           </motion.span>
@@ -48,7 +48,7 @@ export const Courses = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 tracking-tight"
           >
             Programs That Build
-            <span className="block mt-1 bg-gradient-to-r from-teal-300 to-sky-300 bg-clip-text text-transparent">
+            <span className="block mt-1 bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent">
               Confident Learners
             </span>
           </motion.h1>
