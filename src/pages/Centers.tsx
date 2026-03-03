@@ -53,8 +53,8 @@ export const Centers = () => {
                     rel="noopener noreferrer"
                     className="text-slate-700 hover:text-accent-600 transition-colors leading-relaxed block group"
                   >
-                    House No.2 Lane No. 5, Nakronda Road<br />
-                    Sainik Colony, Dehradun<br />
+                    House No.2 Lane No. 5, Sainik Colony <br />
+                    Nakronda Road, Dehradun<br />
                     Uttarakhand 248001
                     <div className="mt-3 inline-flex items-center space-x-2 text-accent-600 font-semibold group-hover:text-accent-700">
                       <Navigation className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
