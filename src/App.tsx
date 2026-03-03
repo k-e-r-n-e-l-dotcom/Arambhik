@@ -10,7 +10,6 @@ import { Faculty } from './pages/Faculty';
 import { Courses } from './pages/Courses';
 import { Centers } from './pages/Centers';
 import { Contact } from './pages/Contact';
-import { Login } from './pages/Login';
 import StudentCorner from './pages/StudentCorner';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
               <Route path="/courses" element={<Courses />} />
               <Route path="/centers" element={<Centers />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/login" element={<Login />} />
               <Route path="/student-corner" element={<StudentCorner />} />
             </Routes>
           </main>
