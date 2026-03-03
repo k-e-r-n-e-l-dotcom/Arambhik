@@ -20,7 +20,7 @@ export const Footer = () => {
               </h3>
             </div>
             <p className="text-slate-300 leading-relaxed">
-              Building strong foundations for academic excellence. Specializing in CBSE and ICSE board exam preparation for Classes 1-10 in Dehradun.
+              Building strong foundations for academic excellence. Specializing in CBSE and ICSE board exam preparation for Classes 1-10.
             </p>
           </div>
 
