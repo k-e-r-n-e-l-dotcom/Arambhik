@@ -66,7 +66,7 @@ export const About = () => {
               <Eye className="h-12 w-12 text-accent-600 mb-4" />
               <h3 className="text-xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-3">Our Vision</h3>
               <p className="text-gray-700">
-                To become a trusted learning partner where every child discovers their potential through hands-on experimentation and personalized guidance. We envision a future where education is accessible to all, where dedicated lab facilities and experienced mentors work together to build not just academic excellence, but strong character, critical thinking, and lifelong curiosity in every student we teach.
+                To become a trusted learning partner where every child discovers their potential through hands-on experimentation and personalized guidance. We envision a future where education is accessible to all.
               </p>
             </motion.div>
 
