@@ -3,7 +3,7 @@ import { Target, Eye, Heart } from 'lucide-react';
 
 export const About = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pt-20">
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
