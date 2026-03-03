@@ -84,8 +84,8 @@ export const Contact = () => {
               <MapPin className="h-12 w-12 text-accent-600 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl text-gray-900 mb-3">Visit Us</h3>
               <p className="text-slate-600 leading-relaxed">
-                House No.2 Lane No. 5, Nakronda Road,<br />
-                Sainik Colony, Dehradun,<br />
+                House No.2 Lane No. 5, Sainik Colony,<br />
+                Nakronda Road, Dehradun,<br />
                 Uttarakhand 248001
               </p>
               <div className="mt-4 inline-flex items-center space-x-2 text-accent-600 font-semibold group-hover:text-accent-700">
