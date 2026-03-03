@@ -15,7 +15,7 @@ export const Contact = () => {
   const faqs = [
     {
       question: 'Which classes do you teach?',
-      answer: 'We provide tuition for students from Class 6th to 12th for both CBSE and ICSE boards. We cover all subjects including Mathematics, Science, English, Social Studies, and languages.'
+      answer: 'We provide tuition for students from Class 1st to 10th for both CBSE and ICSE boards. We cover all subjects including Mathematics, Science, English, Social Studies, and languages.'
     },
     {
       question: 'What is the batch size?',
