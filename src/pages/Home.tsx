@@ -104,7 +104,7 @@ export const Home = () => {
                 className="inline-flex items-center space-x-2 backdrop-blur-md bg-white/10 border border-white/20 px-5 py-2.5 rounded-full shadow-soft"
               >
                 <div className="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-white">Trusted by Parents</span>
+                <span className="text-sm font-semibold text-white">Trusted by Parents & Students</span>
               </motion.div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white text-balance font-bold">
