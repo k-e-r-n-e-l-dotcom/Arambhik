@@ -53,8 +53,8 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-slate-300 text-sm hover:text-primary-400 transition-colors underline decoration-dotted underline-offset-2"
                 >
-                  House No.2 Lane No. 5, Nakronda Road,<br />
-                  Sainik Colony, Dehradun, Uttarakhand 248001
+                  House No.2 Lane No. 5, Sainik Colony,<br />
+                  Nakronda Road, Dehradun, Uttarakhand 248001
                 </a>
               </div>
               <div className="flex items-center space-x-3">
