@@ -32,17 +32,17 @@ export const Centers = () => {
             animate={{ opacity: 1, y: 0 }}
             className="backdrop-blur-md bg-white/70 border border-white/40 rounded-3xl shadow-soft-lg overflow-hidden"
           >
-            <div className="bg-gradient-to-r from-[#F37021] to-[#C45512] p-10 text-white">
-              <h2 className="text-4xl mb-3"></h2>
-              <p className="text-lg text-white/90">Arambhik Academy - Dehradun</p>
+            <div className="bg-gradient-to-r from-[#F37021] to-[#C45512] p-6 sm:p-8 md:p-10 text-white">
+              <h2 className="text-3xl sm:text-4xl mb-3"></h2>
+              <p className="text-base sm:text-lg text-white/90">Arambhik Academy - Dehradun</p>
             </div>
 
-            <div className="p-10 space-y-8">
+            <div className="p-6 sm:p-8 md:p-10 space-y-6 sm:space-y-8">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="flex items-start space-x-4"
+                className="flex items-start space-x-3 sm:space-x-4"
               >
                 <MapPin className="h-7 w-7 text-accent-600 mt-1 flex-shrink-0" />
                 <div>
@@ -69,7 +69,7 @@ export const Centers = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="flex items-start space-x-4"
+                className="flex items-start space-x-3 sm:space-x-4"
               >
                 <Phone className="h-7 w-7 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
@@ -87,7 +87,7 @@ export const Centers = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="flex items-start space-x-4"
+                className="flex items-start space-x-3 sm:space-x-4"
               >
                 <Mail className="h-7 w-7 text-green-600 mt-1 flex-shrink-0" />
                 <div>
@@ -107,7 +107,7 @@ export const Centers = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="flex items-start space-x-4"
+                className="flex items-start space-x-3 sm:space-x-4"
               >
                 <Clock className="h-7 w-7 text-purple-600 mt-1 flex-shrink-0" />
                 <div>
@@ -159,7 +159,7 @@ export const Centers = () => {
                   href="https://www.google.com/maps/search/?api=1&query=House+No.2+Lane+No.+5+Nakronda+Road+Sainik+Colony+Dehradun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all font-semibold"
+                  className="inline-flex items-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all font-semibold"
                 >
                   <Navigation className="h-5 w-5" />
                   <span>Get Directions</span>

@@ -95,7 +95,7 @@ export const Home = () => {
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10 px-2 sm:px-0">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -167,7 +167,7 @@ Admissions Open | Limited Seats Available for Session 2026-2027
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link
                   to="/courses"
-                  className="group px-8 py-4 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white rounded-full shadow-lg hover:shadow-2xl hover:shadow-accent-500/30 hover:-translate-y-1 transition-all duration-300 font-semibold inline-flex items-center justify-center space-x-2"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#F37021] to-[#C45512] text-white rounded-full shadow-lg hover:shadow-2xl hover:shadow-accent-500/30 hover:-translate-y-1 transition-all duration-300 font-semibold inline-flex items-center justify-center space-x-2"
                 >
                   <span>Explore Courses</span>
                   <svg className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -176,7 +176,7 @@ Admissions Open | Limited Seats Available for Session 2026-2027
                 </Link>
                 <Link
                   to="/contact"
-                  className="px-8 py-4 backdrop-blur-md bg-white/10 border border-white/20 text-white rounded-full hover:shadow-soft hover:-translate-y-1 transition-all duration-300 font-semibold inline-flex items-center justify-center"
+                  className="px-6 sm:px-8 py-3 sm:py-4 backdrop-blur-md bg-white/10 border border-white/20 text-white rounded-full hover:shadow-soft hover:-translate-y-1 transition-all duration-300 font-semibold inline-flex items-center justify-center"
                 >
                   Contact Us
                 </Link>
@@ -222,7 +222,7 @@ Admissions Open | Limited Seats Available for Session 2026-2027
                   rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                   opacity: { delay: 0.8, duration: 0.6 }
                 }}
-                className="absolute top-4 sm:top-8 -right-2 sm:-right-4 backdrop-blur-md bg-gradient-to-br from-[#F37021] to-[#C45512] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-2xl sm:rounded-3xl shadow-lg shadow-accent-500/30 border border-white/20"
+                className="absolute top-4 sm:top-8 right-0 sm:-right-4 backdrop-blur-md bg-gradient-to-br from-[#F37021] to-[#C45512] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-2xl sm:rounded-3xl shadow-lg shadow-accent-500/30 border border-white/20"
               >
                 <div className="text-xs sm:text-sm font-semibold">Classes</div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold">1-10</div>
