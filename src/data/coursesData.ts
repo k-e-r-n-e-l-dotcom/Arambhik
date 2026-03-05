@@ -105,7 +105,7 @@ export const courses: CourseData[] = [
     outcome:
       'Strong written preparation, confident personality, and readiness for RIMC/NDA & SSB.',
     fees: {
-      weekend: '₹1000',
+      weekend: '₹1500',
     },
   },
   {
