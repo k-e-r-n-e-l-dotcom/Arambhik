@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Star, Trophy, Microscope, User } from 'lucide-react';
+import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Star, Trophy, Microscope, User, Sparkles, HeartHandshake, MonitorSmartphone, DollarSign } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
@@ -324,21 +324,49 @@ Admissions Open | Limited Seats Available for Session 2026-2027
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: BookOpen,
-                title: 'Learning by Doing',
-                description: 'Hands-on practical approach where students learn through experiments, projects, and real-world applications',
+                icon: Sparkles,
+                title: 'Practical & Curiosity-Driven Learning',
+                description: 'Hands-on approach that transforms natural curiosity into deep understanding through experiments and real-world applications',
                 gradient: 'from-primary-500/10 to-primary-600/5',
                 iconColor: 'text-primary-600'
               },
               {
+                icon: Users,
+                title: 'Expert Mentor Support',
+                description: 'Experienced teachers dedicated to building confidence and concept clarity in every student',
+                gradient: 'from-blue-500/10 to-blue-600/5',
+                iconColor: 'text-blue-600'
+              },
+              {
                 icon: Microscope,
                 title: 'Dedicated Science & Computer Labs',
-                description: 'An integrated science laboratory fully equipped with modern equipment to nurture and support students\' curiosity.',
+                description: 'Fully equipped laboratories with modern equipment to nurture curiosity and support hands-on learning',
                 gradient: 'from-accent-500/10 to-accent-600/5',
                 iconColor: 'text-accent-600'
+              },
+              {
+                icon: MonitorSmartphone,
+                title: 'Seamless Technology Integration',
+                description: 'Modern digital tools and learning platforms integrated into curriculum for enhanced understanding',
+                gradient: 'from-green-500/10 to-green-600/5',
+                iconColor: 'text-green-600'
+              },
+              {
+                icon: DollarSign,
+                title: 'Quality & Affordable Education',
+                description: 'Excellence in education made accessible with competitive fees and flexible payment options',
+                gradient: 'from-orange-500/10 to-orange-600/5',
+                iconColor: 'text-orange-600'
+              },
+              {
+                icon: HeartHandshake,
+                title: 'Commitment to Social Impact',
+                description: 'Free education to underprivileged students, ensuring quality learning reaches every child',
+                gradient: 'from-pink-500/10 to-pink-600/5',
+                iconColor: 'text-pink-600'
               }
             ].map((item, index) => {
               const Icon = item.icon;
