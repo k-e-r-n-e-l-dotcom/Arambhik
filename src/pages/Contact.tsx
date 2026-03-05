@@ -46,14 +46,14 @@ export const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <section className="relative py-32 px-4 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-accent-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
+    <div className="min-h-screen w-full overflow-x-hidden">
+      <section className="relative py-24 sm:py-28 md:py-32 px-4 sm:px-6 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white overflow-hidden w-full max-w-full">
+        <div className="absolute inset-0 opacity-20 overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-accent-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-primary-500 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,8 +68,8 @@ export const Contact = () => {
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-primary-50">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-primary-50 w-full max-w-full">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             <motion.a
               href="https://www.google.com/maps/search/?api=1&query=House+No.2+Lane+No.+5+Nakronda+Road+Sainik+Colony+Dehradun"

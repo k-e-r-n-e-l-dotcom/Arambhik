@@ -22,17 +22,17 @@ const cardVariants = {
 
 export const Courses = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden">
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white pt-32 pb-20 px-4 overflow-hidden"
+        className="relative bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden w-full max-w-full"
       >
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent-500 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-96 h-96 bg-primary-500 rounded-full blur-3xl" />
+        <div className="absolute inset-0 opacity-20 overflow-hidden">
+          <div className="absolute top-20 left-10 w-64 h-64 sm:w-72 sm:h-72 bg-accent-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-20 w-64 h-64 sm:w-96 sm:h-96 bg-primary-500 rounded-full blur-3xl" />
         </div>
-        <div className="max-w-7xl mx-auto text-center relative z-10">
+        <div className="max-w-7xl mx-auto text-center relative z-10 w-full">
           <motion.span
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,8 +63,8 @@ export const Courses = () => {
         </div>
       </motion.section>
 
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 w-full max-w-full">
+        <div className="max-w-7xl mx-auto w-full">
           <motion.div
             variants={containerVariants}
             initial="hidden"

@@ -87,14 +87,14 @@ export const Home = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <section className="relative min-h-screen flex items-center px-4 pt-32 pb-20 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937]">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-500/40 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+    <div className="min-h-screen w-full overflow-x-hidden">
+      <section className="relative min-h-screen flex items-center px-4 sm:px-6 pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] w-full max-w-full">
+        <div className="absolute inset-0 opacity-30 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-accent-500/40 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-primary-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="max-w-7xl mx-auto w-full relative z-10 px-2 sm:px-0">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -112,7 +112,7 @@ export const Home = () => {
                 <span className="text-sm font-semibold text-white">Trusted by Parents & Students</span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white text-balance font-bold">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] text-white text-balance font-bold">
                Where Learning{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 bg-gradient-to-r from-[#F4B400] via-[#F78747] to-[#F37021] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(243,112,33,0.5)]" style={{ WebkitTextStroke: '0.5px rgba(243,112,33,0.3)' }}>
@@ -122,13 +122,13 @@ export const Home = () => {
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
                     transition={{ delay: 0.8, duration: 0.8 }}
-                    className="absolute bottom-2 left-0 h-3 bg-gradient-to-r from-accent-500/40 to-accent-600/40 blur-sm -z-10"
+                    className="absolute bottom-1 sm:bottom-2 left-0 h-2 sm:h-3 bg-gradient-to-r from-accent-500/40 to-accent-600/40 blur-sm -z-10"
                   ></motion.div>
                 </span>
               </h1>
 
-              <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
-                We’ve evolved traditional studies into a curiosity-driven curriculum that transforms your child’s natural wonder into the academic confidence and critical thinking skills they need to excel.
+              <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed max-w-xl">
+                We've evolved traditional studies into a curiosity-driven curriculum that transforms your child's natural wonder into the academic confidence and critical thinking skills they need to excel.
 
 Admissions Open | Limited Seats Available for Session 2026-2027
               </p>
@@ -222,18 +222,18 @@ Admissions Open | Limited Seats Available for Session 2026-2027
                   rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                   opacity: { delay: 0.8, duration: 0.6 }
                 }}
-                className="absolute top-8 -right-4 backdrop-blur-md bg-gradient-to-br from-[#F37021] to-[#C45512] text-white px-8 py-4 rounded-3xl shadow-lg shadow-accent-500/30 border border-white/20"
+                className="absolute top-4 sm:top-8 -right-2 sm:-right-4 backdrop-blur-md bg-gradient-to-br from-[#F37021] to-[#C45512] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-2xl sm:rounded-3xl shadow-lg shadow-accent-500/30 border border-white/20"
               >
-                <div className="text-sm font-semibold">Classes</div>
-                <div className="text-4xl font-bold">1-10</div>
+                <div className="text-xs sm:text-sm font-semibold">Classes</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold">1-10</div>
               </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-white w-full max-w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -307,8 +307,8 @@ Admissions Open | Limited Seats Available for Session 2026-2027
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-gradient-to-b from-white to-primary-50/50">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-primary-50/50 w-full max-w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -391,13 +391,13 @@ Admissions Open | Limited Seats Available for Session 2026-2027
         </div>
       </section>
 
-      <section className="py-24 px-4 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-accent-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-[#1F2937] via-[#2B3445] to-[#1F2937] text-white relative overflow-hidden w-full max-w-full">
+        <div className="absolute inset-0 opacity-20 overflow-hidden">
+          <div className="absolute top-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-accent-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-primary-500 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto text-center relative z-10">
+        <div className="max-w-7xl mx-auto text-center relative z-10 w-full">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

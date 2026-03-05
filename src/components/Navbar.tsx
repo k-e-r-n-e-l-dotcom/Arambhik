@@ -15,23 +15,23 @@ export const Navbar = () => {
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+    <div className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 pt-2 sm:pt-4 w-full max-w-full">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="backdrop-blur-md bg-white/80 border border-white/20 shadow-soft-lg rounded-2xl max-w-7xl mx-auto"
+        className="backdrop-blur-md bg-white/80 border border-white/20 shadow-soft-lg rounded-2xl max-w-7xl mx-auto w-full"
       >
-        <div className="px-4 md:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 gap-4">
-            <Link to="/" className="flex items-center space-x-2 md:space-x-3 group flex-shrink-0">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden group-hover:scale-110 transition-transform duration-300 bg-white shadow-sm">
+        <div className="px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-14 sm:h-16 gap-2 sm:gap-4">
+            <Link to="/" className="flex items-center space-x-1.5 sm:space-x-2 md:space-x-3 group flex-shrink-0 min-w-0">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg overflow-hidden group-hover:scale-110 transition-transform duration-300 bg-white shadow-sm flex-shrink-0">
                 <img
                   src="/updated_Icon.jpeg"
                   alt="Arambhik Academy Logo"
                   className="w-full h-full object-contain p-0.5"
                 />
               </div>
-              <span className="text-base md:text-lg font-bold font-montserrat text-primary-800 whitespace-nowrap">Arambhik Academy</span>
+              <span className="text-sm sm:text-base md:text-lg font-bold font-montserrat text-primary-800 truncate">Arambhik Academy</span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
@@ -56,13 +56,14 @@ export const Navbar = () => {
             </div>
 
             <button
-              className="md:hidden p-2 hover:bg-slate-100 rounded-xl transition-colors"
+              className="md:hidden p-1.5 sm:p-2 hover:bg-slate-100 rounded-xl transition-colors flex-shrink-0"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-primary-700" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6 text-primary-700" />
               ) : (
-                <Menu className="h-6 w-6 text-primary-700" />
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-primary-700" />
               )}
             </button>
           </div>

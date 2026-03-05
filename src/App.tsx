@@ -16,10 +16,10 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col overflow-x-hidden">
           <Navbar />
 
-          <main className="flex-grow">
+          <main className="flex-grow w-full">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

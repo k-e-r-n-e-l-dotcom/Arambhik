@@ -5,8 +5,9 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-primary-50 text-primary-900 font-inter antialiased;
+  html, body {
+    @apply bg-primary-50 text-primary-900 font-inter antialiased overflow-x-hidden;
+    max-width: 100vw;
   }
 
   h1, h2, h3, h4, h5, h6 {

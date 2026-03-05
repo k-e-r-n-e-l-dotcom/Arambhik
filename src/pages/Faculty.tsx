@@ -26,13 +26,13 @@ const facultyData = [
 
 export const Faculty = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden">
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-blue-800 text-white py-16 px-4"
+        className="bg-blue-800 text-white py-12 sm:py-16 px-4 sm:px-6 w-full max-w-full"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Faculty</h1>
           <p className="text-xl text-blue-100">
             Learn from the best minds in education
@@ -40,8 +40,8 @@ export const Faculty = () => {
         </div>
       </motion.section>
 
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 w-full max-w-full">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {facultyData.map((member, index) => (
               <motion.div
@@ -54,7 +54,7 @@ export const Faculty = () => {
                 <img
                   src={member.photo}
                   alt={member.name}
-                  className="w-full h-64 object-cover"
+                  className="w-full max-w-full h-64 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-blue-900 mb-2">

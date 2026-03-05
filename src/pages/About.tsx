@@ -3,13 +3,13 @@ import { Target, Eye, Heart } from 'lucide-react';
 
 export const About = () => {
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-50 pt-20 w-full overflow-x-hidden">
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-gradient-to-br from-[#1F2937] to-[#2B3445] text-white py-20 px-4"
+        className="bg-gradient-to-br from-[#1F2937] to-[#2B3445] text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 w-full max-w-full"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
           <p className="text-xl text-slate-200">
             Arambhik Academy - A legacy of academic brilliance
@@ -17,8 +17,8 @@ export const About = () => {
         </div>
       </motion.section>
 
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 w-full max-w-full">
+        <div className="max-w-4xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
