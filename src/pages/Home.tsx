@@ -3,11 +3,20 @@ import { BookOpen, Users, Award, TrendingUp, ChevronDown, Quote, ArrowRight, Sta
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
+import { HeroCarousel } from '../components/HeroCarousel';
 
 export const Home = () => {
   const [readMore, setReadMore] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentResult, setCurrentResult] = useState(0);
+
+  const heroImages = [
+    '/kanyadan.webp',
+    '/arambhik_1.jpeg',
+    '/arambhik_4.jpeg',
+    '/arambhik_2.jpeg',
+    '/arambhik_3.jpeg'
+  ];
 
   const testimonials = [
     {
@@ -180,7 +189,7 @@ export const Home = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex items-center justify-center order-1 lg:order-2"
+              className="relative flex items-center justify-center order-1 lg:order-2 group"
             >
               <motion.div
                 animate={{
@@ -198,13 +207,11 @@ export const Home = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, duration: 1 }}
-                className="relative w-full max-w-[500px] aspect-square"
+                className="relative w-full max-w-[500px]"
               >
-                <img
-                  src="/kanyadan.webp"
-                  alt="Teacher instructing students in classroom"
-                  className="w-full h-full object-cover rounded-3xl shadow-2xl border-4 border-white/10"
-                />
+                <div className="shadow-2xl border-4 border-white/10 rounded-3xl overflow-hidden">
+                  <HeroCarousel images={heroImages} autoplayInterval={4000} />
+                </div>
               </motion.div>
 
               <motion.div
