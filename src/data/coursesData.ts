@@ -66,7 +66,7 @@ export const courses: CourseData[] = [
   },
   {
     title: 'Academic Foundation Program',
-    subtitle: 'All Subjects Support (Classes 6–10)',
+    subtitle: 'Mathematics & Science (Classes 1–10)',
     icon: GraduationCap,
     accent: 'from-primary-700 to-primary-800',
     accentLight: 'bg-primary-50',
@@ -82,8 +82,7 @@ export const courses: CourseData[] = [
       'Learning by doing in small batches with personal attention, dedicated lab facilities, and daily progress tracking.',
     outcome: 'Consistent improvement and strong academic base.',
     fees: {
-      addon: '₹800',
-      regular: '₹1300',
+      regular: '₹1300-₹2000',
     },
   },
   {
