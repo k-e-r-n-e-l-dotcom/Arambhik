@@ -117,10 +117,10 @@ export const Home = () => {
               </motion.div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white text-balance font-bold">
-                From Basics to{' '}
+               Where Learning{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 bg-gradient-to-r from-[#F4B400] via-[#F78747] to-[#F37021] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(243,112,33,0.5)]" style={{ WebkitTextStroke: '0.5px rgba(243,112,33,0.3)' }}>
-                    Brilliance
+                    Begins!
                   </span>
                   <motion.div
                     initial={{ width: 0 }}
@@ -132,7 +132,9 @@ export const Home = () => {
               </h1>
 
               <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
-                Dedicated Science & Computer Labs where students learn by doing — building real understanding, confidence, and step-by-step academic growth.
+                We’ve evolved traditional studies into a curiosity-driven curriculum that transforms your child’s natural wonder into the academic confidence and critical thinking skills they need to excel.
+
+Admissions Open | Limited Seats Available for Session 2026-2027
               </p>
 
               <div className="pt-4 space-y-6">
