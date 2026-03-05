@@ -31,7 +31,7 @@ A Tailored Path to Academic Excellence.
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed">
               We have evolved traditional studies into a curiosity-driven curriculum designed specifically for students from Class 1 to 10. By prioritizing deep conceptual understanding over rote memorization, we ensure that every child—from the primary years to secondary school—builds a strong, unshakable foundation.
-Our unique learning model is built on:
+Our unique learning model is built on.
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed">
             Structured Preparation: Blending engaging offline classroom sessions with meaningful post-class practice.
