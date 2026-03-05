@@ -355,7 +355,7 @@ Admissions Open | Limited Seats Available for Session 2026-2027
                 iconColor: 'text-green-600'
               },
               {
-                icon: RupeeSign,
+                icon: DollarSign,
                 title: 'Quality & Affordable Education',
                 description: 'Excellence in education made accessible with competitive fees and flexible payment options',
                 gradient: 'from-orange-500/10 to-orange-600/5',
