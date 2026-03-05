@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Lightbulb, Trophy, ChevronDown } from 'lucide-react';
+import { Check, Lightbulb, Trophy, ChevronDown, DollarSign } from 'lucide-react';
 import type { CourseData } from '../data/coursesData';
 
 interface CourseCardProps {
@@ -56,6 +56,40 @@ export const CourseCard = ({ course }: CourseCardProps) => {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="mb-5">
+          <div className="flex items-center gap-2 mb-3">
+            <div className={`p-1 rounded-md ${course.accentBg}`}>
+              <DollarSign className={`h-3.5 w-3.5 ${course.accentText}`} />
+            </div>
+            <h4 className="text-sm font-semibold text-slate-800 uppercase tracking-wider">
+              Fees
+            </h4>
+          </div>
+          <div className="space-y-1.5">
+            {course.fees.addon && (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 text-[15px] leading-relaxed">
+                  <span className="font-medium">Add-on</span> – {course.fees.addon}
+                </span>
+              </div>
+            )}
+            {course.fees.regular && (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 text-[15px] leading-relaxed">
+                  <span className="font-medium">Regular</span> – {course.fees.regular}
+                </span>
+              </div>
+            )}
+            {course.fees.weekend && (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 text-[15px] leading-relaxed">
+                  <span className="font-medium">Weekend Classes</span> – {course.fees.weekend}
+                </span>
+              </div>
+            )}
+          </div>
         </div>
 
         <AnimatePresence initial={false}>
