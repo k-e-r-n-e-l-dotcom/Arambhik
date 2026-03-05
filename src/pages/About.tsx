@@ -27,7 +27,7 @@ export const About = () => {
             <h2 className="text-3xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-6">Our Story</h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
              At Arambhik Academy, we believe that every student’s journey toward excellence starts with a single spark of interest. Founded by a visionary educator with over 10 years of teaching experience in schools, competitive examination coaching, and official board examination checking, our institute is built on an insider’s understanding of what it takes to succeed.
-A Tailored Path to Academic Excellence
+A Tailored Path to Academic Excellence.
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed">
               We have evolved traditional studies into a curiosity-driven curriculum designed specifically for students from Class 1 to 10. By prioritizing deep conceptual understanding over rote memorization, we ensure that every child—from the primary years to secondary school—builds a strong, unshakable foundation.
