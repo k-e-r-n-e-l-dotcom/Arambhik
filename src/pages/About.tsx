@@ -26,19 +26,24 @@ export const About = () => {
           >
             <h2 className="text-3xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-6">Our Story</h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Arambhik Academy is a concept-driven learning institute designed for CBSE students from Class 6 to 10, where understanding comes before memorisation. We believe education should build clarity, confidence, and curiosity—not pressure.
+             At Arambhik Academy, we believe that every student’s journey toward excellence starts with a single spark of interest. Founded by a visionary educator with over 10 years of teaching experience in schools, competitive examination coaching, and official board examination checking, our institute is built on an insider’s understanding of what it takes to succeed.
+A Tailored Path to Academic Excellence
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Our teaching follows a unique learning model that blends structured pre-class preparation, engaging offline classroom sessions, and meaningful post-class practice. With small batch sizes (maximum 10 students per class), we ensure personal attention, regular feedback, and strong teacher-student interaction. Our team includes experienced offline subject teachers, an online educator, and dedicated mentors, working together to support both academic growth and disciplined study habits.
+              We have evolved traditional studies into a curiosity-driven curriculum designed specifically for students from Class 1 to 10. By prioritizing deep conceptual understanding over rote memorization, we ensure that every child—from the primary years to secondary school—builds a strong, unshakable foundation.
+Our unique learning model is built on:
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Technology supports our learning ecosystem through Google Classroom, Meet, Sheets, presentations, and WhatsApp, making communication, tracking, and revision seamless for students and parents.
+            Structured Preparation: Blending engaging offline classroom sessions with meaningful post-class practice.
             </p>
             <p className="text-gray-700 mb-4 leading-relaxed">
-              Our academy is equipped with a dedicated science and computer lab where students learn through experiments, demonstrations, and hands-on activities. The lab environment encourages curiosity, practical understanding, and application-based learning aligned with the CBSE curriculum.
+            Modern Integration: Using tools like Google Classroom, Meet, and WhatsApp for seamless progress tracking.
+Personalized Care: We strictly maintain small batch sizes (maximum 15 students) to ensure our Subject Matter Experts focus on individual academic growth.
+Learning Through Discovery
             </p>
             <p className="text-gray-700 leading-relaxed">
-              At Arambhik Academy, we don't just prepare students for exams—we help them think scientifically, learn independently, and grow confidently. Every concept is taught with purpose, every student is guided with care, and every step of learning begins with a strong foundation.
+            We believe real understanding happens when students learn by doing. Our academy features dedicated Science and Computer Labs where students engage in hands-on experiments and demonstrations. This application-based environment encourages students to move beyond the textbook, transforming "how do I solve this?" into "what else can I discover?".
+Admission Open | Limited Seats for Session 2026-2027
             </p>
           </motion.div>
 
