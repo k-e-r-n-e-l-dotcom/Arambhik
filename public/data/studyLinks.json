@@ -1,0 +1,30 @@
+[
+  {
+    "class": "Class 1",
+    "subject": "Mathematics",
+    "notes": "https://drive.google.com/file/d/example1/view",
+    "mindmap": "https://drive.google.com/file/d/example2/view",
+    "ncert": "https://ncert.nic.in/textbook.php?aemh1=0-0"
+  },
+  {
+    "class": "Class 1",
+    "subject": "English",
+    "notes": "https://drive.google.com/file/d/example3/view",
+    "mindmap": "",
+    "ncert": "https://ncert.nic.in/textbook.php?aeen1=0-0"
+  },
+  {
+    "class": "Class 2",
+    "subject": "Mathematics",
+    "notes": "https://drive.google.com/file/d/example4/view",
+    "mindmap": "https://drive.google.com/file/d/example5/view",
+    "ncert": "https://ncert.nic.in/textbook.php?bemh1=0-0"
+  },
+  {
+    "class": "Class 2",
+    "subject": "Science",
+    "notes": "",
+    "mindmap": "https://drive.google.com/file/d/example6/view",
+    "ncert": "https://ncert.nic.in/textbook.php?besc1=0-0"
+  }
+]
