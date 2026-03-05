@@ -52,7 +52,7 @@ export const About = () => {
               <Target className="h-12 w-12 text-accent-600 mb-4" />
               <h3 className="text-xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-3">Our Mission</h3>
               <p className="text-gray-700">
-                To nurture independent thinkers and true leaders through concept-based learning by doing. We are committed to providing experimental education in our dedicated labs where every student—including differently abled learners—gets equal access to quality education. Our mission is to make learning meaningful, inclusive, and transformative, helping students grow into confident individuals who understand the 'why' behind every 'what'.
+                To provide high-quality, concept-based education at an affordable rate to nurture independent thinkers
               </p>
             </motion.div>
 
@@ -66,7 +66,7 @@ export const About = () => {
               <Eye className="h-12 w-12 text-accent-600 mb-4" />
               <h3 className="text-xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-3">Our Vision</h3>
               <p className="text-gray-700">
-                To become a trusted learning partner where every child discovers their potential through hands-on experimentation and personalized guidance. We envision a future where education is accessible to all.
+                To build a future where every child discovers their potential, eventually establishing schools that offer free education to underprivileged students.
               </p>
             </motion.div>
 
@@ -80,7 +80,7 @@ export const About = () => {
               <Heart className="h-12 w-12 text-accent-600 mb-4" />
               <h3 className="text-xl font-bold bg-gradient-to-r from-[#F4B400] to-[#F37021] bg-clip-text text-transparent mb-3">Our Values</h3>
               <p className="text-gray-700">
-                Understanding over memorization. Practice over theory. Inclusion over exclusion. We believe in personal attention, honest feedback, and creating a learning environment where mistakes are stepping stones to mastery. Our commitment to small batch sizes, dedicated lab facilities, and equal opportunities for all students—including those with special needs—reflects our core belief that quality education is a right, not a privilege.
+                 We prioritize understanding over memorization and personal attention over large crowds, believing that quality education is a right, not a privilege.
               </p>
             </motion.div>
           </div>
