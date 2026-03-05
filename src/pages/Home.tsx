@@ -11,11 +11,7 @@ export const Home = () => {
   const [currentResult, setCurrentResult] = useState(0);
 
   const heroImages = [
-    '/kanyadan.webp',
-    '/arambhik_1.jpeg',
-    '/arambhik_4.jpeg',
-    '/arambhik_2.jpeg',
-    '/arambhik_3.jpeg'
+    '/kanyadan.webp'
   ];
 
   const testimonials = [
