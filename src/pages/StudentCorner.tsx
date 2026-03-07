@@ -356,6 +356,20 @@ export default function StudentCorner() {
                         </a>
                       </div>
                     </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Brain className="h-5 w-5 text-purple-600" />
+                          <a
+                          href={chapter.ncert_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          NCERT Link
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
