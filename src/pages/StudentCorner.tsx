@@ -329,31 +329,31 @@ export default function StudentCorner() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <FileText className="h-5 w-5 text-green-600" />
-                        <h4 className="text-lg font-semibold text-gray-900">Notes</h4>
-                      </div>
                       <div className="bg-green-50 rounded-lg p-4">
-                        <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
-                          {chapter.notes}
-                        </p>
+                        <a
+                          href="https://drive.google.com/drive/folders/1mVGxBBLDSKYKUB2hI4Uk9qvUGHkaxgLj?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Notes
+                        </a>
                       </div>
                     </div>
 
                     <div>
                       <div className="flex items-center gap-2 mb-3">
                         <Brain className="h-5 w-5 text-purple-600" />
-                        <h4 className="text-lg font-semibold text-gray-900">Mindmap</h4>
-                      </div>
-                      <div className="bg-purple-50 rounded-lg p-4">
-                        <ul className="space-y-2">
-                          {formatMindmap(chapter.mindmap).map((point, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <span className="text-purple-600 mt-1">•</span>
-                              <span className="text-gray-700">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <a
+                          href="https://drive.google.com/drive/folders/1_ufjwrsRxYK8ra8eeO18ObRevC8YsWAZ?usp=share_link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Mindmap
+                        </a>
                       </div>
                     </div>
                   </div>
