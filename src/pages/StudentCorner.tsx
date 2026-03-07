@@ -315,17 +315,6 @@ export default function StudentCorner() {
                       <h3 className="text-2xl font-bold text-gray-900">
                         {chapter.title}
                       </h3>
-                    </div>
-                    <a
-                      href={chapter.ncert_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      NCERT Link
-                    </a>
-                  </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div>
