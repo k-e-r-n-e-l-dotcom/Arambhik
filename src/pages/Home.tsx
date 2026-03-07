@@ -12,7 +12,11 @@ export const Home = () => {
 
   const heroImages = [
     '/kanyadan.webp',
-    '/arambhik_5.jpeg'
+    '/arambhik_5.jpeg',
+    '/arambhik_1.jpeg',
+    '/arambhik_2.jpeg',
+    '/arambhik_3.jpeg',
+    '/arambhik_4.jpeg'
   ];
 
   const testimonials = [
