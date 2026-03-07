@@ -329,7 +329,7 @@ export default function StudentCorner() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     <div>
-                      <div className="bg-green-50 rounded-lg p-4">
+                      <div className="flex items-center gap-2 mb-3">
                         <a
                           href="https://drive.google.com/drive/folders/1mVGxBBLDSKYKUB2hI4Uk9qvUGHkaxgLj?usp=sharing"
                           target="_blank"
