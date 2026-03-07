@@ -11,7 +11,8 @@ export const Home = () => {
   const [currentResult, setCurrentResult] = useState(0);
 
   const heroImages = [
-    '/kanyadan.webp'
+    '/kanyadan.webp',
+    '/arambhik_5.jpeg'
   ];
 
   const testimonials = [
