@@ -327,7 +327,7 @@ export default function StudentCorner() {
                     </a>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div>
                       <div className="flex items-center gap-2 mb-3">
                         <a
