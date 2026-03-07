@@ -249,7 +249,55 @@ export default function StudentCorner() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
+        {currentStudyLink && (
+          <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Study Materials</h3>
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              {currentStudyLink.notes && (
+                <a
+                  href={currentStudyLink.notes}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors shadow-md"
+                >
+                  <FileText className="h-5 w-5" />
+                  Class Notes
+                </a>
+              )}
+              {currentStudyLink.mindmap && (
+                <a
+                  href={currentStudyLink.mindmap}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors shadow-md"
+                >
+                  <Brain className="h-5 w-5" />
+                  Mindmap
+                </a>
+              )}
+              {currentStudyLink.ncert && (
+                <a
+                  href={currentStudyLink.ncert}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+                >
+                  <ExternalLink className="h-5 w-5" />
+                  NCERT Link
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
+        {loadingChapters ? (
+          <div className="grid grid-cols-1 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-64 bg-white rounded-xl shadow-lg animate-pulse"></div>
+            ))}
+          </div>
+        ) : chapters.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6">
                 <div className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div>
