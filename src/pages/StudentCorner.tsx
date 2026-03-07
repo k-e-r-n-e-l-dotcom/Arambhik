@@ -298,14 +298,6 @@ export default function StudentCorner() {
           </div>
         ) : chapters.length > 0 ? (
           <div className="grid grid-cols-1 gap-6">
-            {chapters.map((chapter, index) => (
-              <motion.div
-                key={chapter.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-              >
                 <div className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div>
@@ -351,8 +343,6 @@ export default function StudentCorner() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
           </div>
         ) : selectedSubjectId ? (
           <div className="bg-white rounded-xl shadow-lg p-12 text-center">
