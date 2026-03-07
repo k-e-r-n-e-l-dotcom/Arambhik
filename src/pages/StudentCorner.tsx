@@ -307,29 +307,22 @@ export default function StudentCorner() {
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
               >
                 <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-blue-100 rounded-lg">
-                        <BookOpen className="h-6 w-6 text-blue-600" />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900">
-                        {chapter.title}
-                      </h3>
-                    </div>
-                    <a
-                      href={chapter.ncert_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      NCERT Link
-                    </a>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                     <div>
-                      <div className="bg-green-50 rounded-lg p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <a
+                          href={chapter.ncert_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          NCERT Link
+                        </a>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
                         <a
                           href="https://drive.google.com/drive/folders/1mVGxBBLDSKYKUB2hI4Uk9qvUGHkaxgLj?usp=sharing"
                           target="_blank"
