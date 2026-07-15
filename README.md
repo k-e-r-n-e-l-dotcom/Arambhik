@@ -29,7 +29,7 @@ This project demonstrates my ability to learn new technologies independently and
 
 ## Live Website
 
-https://arambhik.vercel.app
+(https://www.arambhikacademy.com/)
 
 ## Repository Purpose
 
